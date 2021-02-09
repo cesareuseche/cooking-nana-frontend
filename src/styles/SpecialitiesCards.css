@@ -1,0 +1,19 @@
+.box{
+    border-radius: 5px;
+    border: solid 1px lightgray;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    margin-bottom: 30px;
+}
+
+.specialities-align{
+    display: flex;
+    justify-content: center;
+}
+
+.box > h6{
+  text-align: center;
+}
+
+.box:hover{
+  transform: scale(1.5);
+}
