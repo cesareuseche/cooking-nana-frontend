@@ -31,10 +31,10 @@ function MarketProducts({ title, image, price, rating }) {
 }
 
 MarketProducts.propTypes = {
-	title: Proptypes.string,
+	title: PropTypes.string,
 	image: PropTypes.src,
-	price: Proptypes.string,
-	rating: Proptypes.number
+	price: PropTypes.price,
+	rating: PropTypes.number
 };
 
 export default MarketProducts;

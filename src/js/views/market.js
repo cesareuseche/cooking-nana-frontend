@@ -15,7 +15,7 @@ import spiceBundle from "../../img/spice-bundle-market.jpg";
 import tuscanBlend from "../../img/tuscan-blend.jpg";
 import kosherSalt from "../../img/salt-market.jpg";
 
-function Market({ title, image, price, rating }) {
+function Market() {
 	return (
 		<React.Fragment>
 			<div className="market">
@@ -89,12 +89,5 @@ function Market({ title, image, price, rating }) {
 		</React.Fragment>
 	);
 }
-
-Market.propTypes = {
-	title: Proptypes.string,
-	image: PropTypes.src,
-	price: Proptypes.string,
-	rating: Proptypes.number
-};
 
 export default Market;
