@@ -9,6 +9,7 @@ import Recover from "./views/recover";
 import Market from "./views/market";
 import Recipe from "./views/recipe";
 import Checkout from "./views/checkout";
+import IngredientSelection from "./views/ingredientSelection";
 import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
@@ -25,19 +26,20 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/login">
-							<Login />
-						</Route>
-						<Route exact path="/register">
-							<Register />
-						</Route>
-						<Route exact path="/recover">
-							<Recover />
-						</Route>
 						<Route exact path="/">
 							<Header />
 							<Home />
 							<Footer />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/register">
+							<Header />
+							<Register />
+						</Route>
+						<Route exact path="/recover">
+							<Recover />
 						</Route>
 						<Route exact path="/recipe">
 							<Header />
@@ -51,6 +53,11 @@ const Layout = () => {
 						<Route exact path="/market">
 							<Header />
 							<Market />
+						</Route>
+						<Route exact path="/ingredient-selection">
+							<Header />
+							<IngredientSelection />
+							<Footer />
 						</Route>
 						<Route>
 							<h1>Not Found</h1>
