@@ -5,6 +5,8 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import Login from "./views/login";
 import Register from "./views/register";
+import Recover from "./views/recover";
+import Market from "./views/market";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
@@ -30,8 +32,8 @@ const Layout = () => {
 						<Route exact path="/login">
 							<Login />
 						</Route>
-						<Route exact path="/register">
-							<Register />
+						<Route exact path="/market">
+							<Market />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
