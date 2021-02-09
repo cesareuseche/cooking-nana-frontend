@@ -1,19 +1,66 @@
 .box{
-    border-radius: 5px;
-    border: solid 1px lightgray;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-    margin-bottom: 30px;
+  border-radius: 5px;
+  border: solid 1px lightgray;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  margin-bottom: 30px;
+  height: 150px;
+  width: 150px;
 }
 
 .specialities-align{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .box > h6{
-  text-align: center;
+text-align: center;
+color: white;
+font-weight: bold;
+
+}
+
+.box > img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
 }
 
 .box:hover{
-  transform: scale(1.5);
+transform: scale(1.2);
+}
+
+.sushi {
+background-color: #C90006;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.pizza {
+background-color:#FB0000;
+}
+
+.usa {
+background-color:#FD6B00;
+}
+
+.taco{
+background-color:#FFB100;
+}
+
+.sushi > h6{
+margin-top: 50px;
+}
+
+.pizza > h6{
+margin-top: 18px;
+}
+
+.usa > h6{
+margin-top: 16px;
+}
+
+.taco > h6{
+margin-top: 50px;
 }
