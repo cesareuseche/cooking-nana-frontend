@@ -2,12 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
+import Home from "./views/home";
 import Login from "./views/login";
 import Register from "./views/register";
 import Recover from "./views/recover";
 import Market from "./views/market";
 import Recipe from "./views/recipe";
+import Checkout from "./views/checkout";
 import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
@@ -55,7 +56,6 @@ const Layout = () => {
 							<h1>Not Found</h1>
 						</Route>
 					</Switch>
-
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
