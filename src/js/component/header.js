@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
-import cartIcon from "../../img/cart.svg";
+import cartIcon from "../../img/newcart.png";
 
 export const Header = () => {
 	return (
@@ -56,7 +56,7 @@ export const Header = () => {
 											</Link>
 										</li>
 										<li className="nav-item">
-											<Link className="page-scroll" to="/cart">
+											<Link className="page-scroll icon-cart" to="/cart">
 												<img src={cartIcon} />
 												<span>0</span>
 											</Link>
