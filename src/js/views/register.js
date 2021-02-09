@@ -9,9 +9,6 @@ function Register() {
 			<div className="all row">
 				<div className="left-cover col-md-5" />
 				<div className="principal col-md-7 d-flex flex-column align-items-center justify-content-center">
-					<Link to="/">
-						<img className="logo" src={logo} alt="logo" />
-					</Link>
 					<h1>Create your account</h1>
 					<form>
 						<input className="input" type="text" placeholder="Name..." id="user" name="user" size="25" />
@@ -49,7 +46,7 @@ function Register() {
 							size="25"
 						/>
 					</form>
-					<Link to="/register">
+					<Link to="/">
 						<button className="cta-select">Create an account</button>
 					</Link>
 				</div>

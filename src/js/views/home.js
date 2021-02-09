@@ -4,6 +4,7 @@ import RecipesCards from "../component/recipesCards";
 import poke from "../../img/Photo.png";
 import SpecialitiesCards from "../component/specialitiesCards";
 import HowTo from "../component/howTo";
+import { Link } from "react-router-dom";
 
 function Home() {
 	return (
@@ -15,7 +16,9 @@ function Home() {
 						<h3>the best way to eat delicous meals at home</h3>
 					</div>
 					<div className="cta">
-						<button className="cta-select">Start Cooking</button>
+						<Link to="/ingredient-selection">
+							<button className="cta-select">Start Cooking</button>
+						</Link>
 					</div>
 				</div>
 				<div className="cover">
