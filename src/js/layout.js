@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
+import Home from "./views/home";
 import Login from "./views/login";
 import Register from "./views/register";
 import Recover from "./views/recover";
 import Market from "./views/market";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import Recipe from "./views/recipe";
+import Checkout from "./views/checkout";
 import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
@@ -24,22 +24,38 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Header />
 					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
 						<Route exact path="/login">
 							<Login />
 						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/recover">
+							<Recover />
+						</Route>
+						<Route exact path="/">
+							<Header />
+							<Home />
+							<Footer />
+						</Route>
+						<Route exact path="/recipe">
+							<Header />
+							<Recipe />
+							<Footer />
+						</Route>
+						<Route exact path="/cart">
+							<Header />
+							<Checkout />
+						</Route>
 						<Route exact path="/market">
+							<Header />
 							<Market />
 						</Route>
 						<Route>
-							<h1>Not found!</h1>
+							<h1>Not Found</h1>
 						</Route>
 					</Switch>
-					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
