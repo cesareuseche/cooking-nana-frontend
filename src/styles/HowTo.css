@@ -1,0 +1,54 @@
+.howto{
+    display: flex;
+}
+
+.howto__tile__section{
+    margin-top: 3rem;
+}
+
+.rectangular-box{
+    border-radius: 16px;
+    box-shadow: 0 .5rem 1rem rgba(255,218,0,1)!important;
+    margin-bottom: 30px;
+    height: 528.574462890625px;
+    width: 380px;
+    left: -14px;
+    margin-top: 20%;
+
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+}
+
+.icon-size-align{
+    margin-top: 25px;
+    width: 40%;
+}
+
+.table-title{
+    margin: 20px;
+}
+
+.first-step-description{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.single-card-alignment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-margin-bottom{
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 380px) {
+    .rectangular-box {
+        flex-direction: column;
+        align-items: center;
+    }
+}
