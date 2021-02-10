@@ -1,53 +1,49 @@
-.left-cover{
-    width: 50%;
+.login {
     height: 100vh;
-    background-image: url("../img/cover.png"); 
-} 
-
-.logo {
-    width: 60px;
+    background: url("../img/backgroundyellow.jpg");
+    display: grid;
+    place-items: center;
+}
+.login__container > img {
     object-fit: contain;
-    margin: 0 20px;
+    height: 100px;
+    margin-bottom: 40px;
 }
-
-input{
+.login__container {
+    margin: 2% 2%;
+    padding: 50px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) ;
+}
+.sign-in-buttons {
     display: flex;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    font-size: large;
-    cursor: text;
-    margin-top: 25px;
+    flex-direction: column;
+    align-items: center;
 }
-
-input:focus{ outline: none;}
-
-h1{
-    margin-bottom: 35px;
-    margin-bottom: 0px;
-}
-
-.example-text{
-    color: rgba(128, 128, 128, 0.555);
-    margin: 0px 0px;
-}
-
 .cta-select{
     border-radius: 40px;
-    padding: 10px 30px;
+    padding: 10px 10px;
     background: #FFDA00;
     border: solid 2px #ffffff;
     font-size: 20px;
     margin-top: 20px;
+    width: 50%;
+    
+}
+.sign-input{
+    height: 40px;
+    border-radius: 10%;
+    border-radius: 10px;
+    border: solid 1px lightgrey;
+}
+input{
+    margin: 5px;
 }
 
-.cta-select:focus {
-    outline: none;
-    box-shadow: none;
-  }
-
-.cta-select:hover{
-    border: 2px solid #FFDA00;
-    background: #ffffff;
-    color: black;
+.sign-input:focus{
+    outline: none !important;
+    border:1px solid #FFDA00;
+    box-shadow: 0 0 5px #FFDA00;
 }
-
