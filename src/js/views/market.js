@@ -21,7 +21,7 @@ function Market() {
 			<div className="market">
 				<div className="market-container">
 					<img className="market-image" src={marketimage} />
-					<div className="container-fluid presentation-width">
+					<div className="container-fluid">
 						<div className="row">
 							<div className="col-md-12">
 								<h1 className="product-category-font-alignment">Kitchen Tools</h1>

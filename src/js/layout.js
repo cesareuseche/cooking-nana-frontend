@@ -14,6 +14,7 @@ import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
 import { Footer } from "./component/footer";
+import recipesResult from "./views/recipesResult";
 
 //create your first component
 const Layout = () => {
@@ -44,6 +45,11 @@ const Layout = () => {
 						<Route exact path="/recipe">
 							<Header />
 							<Recipe />
+							<Footer />
+						</Route>
+						<Route exact path="/recipes">
+							<Header />
+							<recipesResult />
 							<Footer />
 						</Route>
 						<Route exact path="/cart">
