@@ -24,7 +24,9 @@ function Market() {
 					<div className="container-fluid">
 						<div className="row">
 							<div className="col-md-12">
-								<h1 className="product-category-font-alignment">Kitchen Tools</h1>
+								<div className="product-category-font-alignment">
+									<h1 className="margin-left-tools">Kitchen Tools</h1>
+								</div>
 							</div>
 						</div>
 					</div>
