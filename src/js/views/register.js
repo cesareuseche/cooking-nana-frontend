@@ -11,11 +11,11 @@ function Register() {
 				<h1>Welcome to Cooking Nana</h1>
 				<div className="register-inputs-alignment">
 					<input className="register-input" type="text" placeholder="Name" />
-					<input className="register-input" type="password" placeholder="Last Name" />
+					<input className="register-input" type="text" placeholder="Last Name" />
 					<input className="register-input" type="text" placeholder="Username" />
-					<input className="register-input" type="password" placeholder="Email" />
+					<input className="register-input" type="text" placeholder="Email" />
 					<input className="register-input" type="password" placeholder="Password" />
-					<input className="register-input" type="password" placeholder="Reset Password" />
+					<input className="register-input" type="password" placeholder="Repeat Password" />
 				</div>
 				<div className="register-buttons">
 					<button className="cta-select"> Create an Account </button>

@@ -1,8 +1,6 @@
 .howto{
     display: flex;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,237,155,1) 81%, rgba(250,118,52,1) 94%, rgba(249,49,49,1) 100%);
-
+    background: url("../img/backgroundhowto.jpg");
 }
 
 .howto__tile__section{
