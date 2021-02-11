@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 function Register() {
 	return (
-		<div className="login">
-			<div className="login__container">
+		<div className="register">
+			<div className="register__container">
 				<img src={logo} alt="" />
 				<h1>Welcome to Cooking Nana</h1>
 				<div className="register-inputs-alignment">
