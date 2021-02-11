@@ -43,7 +43,6 @@
 
 .product-category-font-alignment{
     margin-top: 16px;
-    background: #f8f9fa;
 }
 
 .market-icons{
@@ -60,9 +59,11 @@
 }
 
 .margin-left-tools{
-    margin-left: 20px;
     margin-top: 16px;
     margin-left: 67px;
-    padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.background-gray{
+    background-color: #F8F8F8;
 }

@@ -145,7 +145,6 @@
     -ms-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
-    padding: 8px 0;
     position: relative; 
 }
 .navbar-nav .nav-item a:hover{
