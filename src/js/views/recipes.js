@@ -3,7 +3,7 @@ import "../../styles/Recipes.css";
 import bowl from "../../img/poke.jpg";
 import pasta from "../../img/pasta.jpg";
 import risotto from "../../img/risotto.jpg";
-import RecipesResult from "../component/recipesResult";
+import RecipesResult from "../component/RecipeResults";
 
 function Recipes() {
 	return (
@@ -35,3 +35,5 @@ function Recipes() {
 		</React.Fragment>
 	);
 }
+
+export default Recipes;
