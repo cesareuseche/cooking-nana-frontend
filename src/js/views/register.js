@@ -1,24 +1,83 @@
-import React from "react";
+import React, { useState, useContext, useHistory } from "react";
+import { Context } from "../store/appContext";
+
 import "../../styles/Register.css";
 import logo from "../../img/logo.png";
-import { Link } from "react-router-dom";
 
 function Register() {
+	const { actions } = useContext(Context);
+	const history = useHistory;
+	const [name, setName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [repeatPassword, setRepeatPassword] = useState("");
+	const register = e => {
+		e.preventDefault();
+		const response = actions.registerContact(name, lastName, username, email, password);
+		if (response == true) {
+			console.log("usuario creado");
+			history.push("/");
+		} else {
+			console.log("usuario no creado");
+		}
+	};
+
 	return (
 		<div className="register">
 			<div className="register__container">
 				<img src={logo} alt="" />
 				<h1>Welcome to Cooking Nana</h1>
 				<div className="register-inputs-alignment">
-					<input className="register-input" type="text" placeholder="Name" />
-					<input className="register-input" type="text" placeholder="Last Name" />
-					<input className="register-input" type="text" placeholder="Username" />
-					<input className="register-input" type="text" placeholder="Email" />
-					<input className="register-input" type="password" placeholder="Password" />
-					<input className="register-input" type="password" placeholder="Repeat Password" />
+					<input
+						className="register-input"
+						type="text"
+						value={name}
+						placeholder="Name"
+						onChange={e => setName(e.target.value)}
+					/>
+					<input
+						className="register-input"
+						type="text"
+						value={lastName}
+						placeholder="Last Name"
+						onChange={e => setLastName(e.target.value)}
+					/>
+					<input
+						className="register-input"
+						type="text"
+						value={username}
+						placeholder="Username"
+						onChange={e => setUsername(e.target.value)}
+					/>
+					<input
+						className="register-input"
+						type="text"
+						value={email}
+						placeholder="Email"
+						onChange={e => setEmail(e.target.value)}
+					/>
+					<input
+						className="register-input"
+						type="password"
+						value={password}
+						placeholder="Password"
+						onChange={e => setPassword(e.target.value)}
+					/>
+					<input
+						className="register-input"
+						type="password"
+						value={repeatPassword}
+						placeholder="Repeat Password"
+						onChange={e => setRepeatPassword(e.target.value)}
+					/>
 				</div>
 				<div className="register-buttons">
-					<button className="cta-select"> Create an Account </button>
+					<button className="cta-select" onClick={register}>
+						{" "}
+						Create an Account{" "}
+					</button>
 				</div>
 			</div>
 		</div>

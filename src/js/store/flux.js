@@ -1,42 +1,31 @@
+const BASE_URL = "http://localhost:8080";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
+		store: {},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+			registerContact: async ({ email, name, last_name, username, password }) => {
+				let url = BASE_URL + "/register";
+				let new_user = {
+					email: email,
+					name: name,
+					last_name: last_name,
+					username: username,
+					password: password
+				};
+				let response = await fetch(url, {
+					method: "POST",
+					body: new_user
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				if (response.ok) {
+					let created_user = JSON.stringify(response.body);
+					console.log(created_user);
+					return true;
+				} else {
+					console.log(response.body);
+					console.log(response.status);
+					return false;
+				}
 			}
 		}
 	};
