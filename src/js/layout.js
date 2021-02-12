@@ -40,6 +40,7 @@ const Layout = () => {
 						<Route exact path="/register">
 							<Header />
 							<Register />
+							<Footer />
 						</Route>
 						<Route exact path="/recover">
 							<Recover />
