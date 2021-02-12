@@ -14,7 +14,9 @@ function Login() {
 				<div className="sign-in-buttons">
 					<button className="cta-select"> Sign In</button>
 					<button className="cta-select"> Sign In with Google</button>
-					<button className="cta-select"> Create an Account </button>
+					<Link to="/register">
+						<button className="cta-select"> Create an Account </button>
+					</Link>
 				</div>
 			</div>
 		</div>
