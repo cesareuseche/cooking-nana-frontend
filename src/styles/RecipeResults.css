@@ -1,0 +1,24 @@
+.card-size{
+    width: 48%;
+}
+
+.description-alignment p{
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 1024px){
+   .card-size{
+       width: 100%;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+   }
+
+   .recipe-row{
+      display: flex;
+      flex-direction: column;
+       justify-content: center;
+   }
+}

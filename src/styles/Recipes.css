@@ -1,0 +1,43 @@
+.first-result-align{
+    margin-top: 10%;
+}
+
+.recipe-row{
+    display: flex;
+}
+
+.recipe-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.recipe-button button{
+    border-radius: 40px;
+    padding: 10px 20px;
+    background: #FFDA00;
+    border: solid 2px #ffffff;
+    font-size: 20px;
+}
+
+.recipe-button button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.recipe-button button:hover{
+    border: 2px solid #FFDA00;
+    background: #ffffff;
+    color: black;
+}
+
+@media screen and (max-width: 1024px) {
+    .recipe-button{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .mobile-margin{
+        margin-top: 20%;
+    }
+}
