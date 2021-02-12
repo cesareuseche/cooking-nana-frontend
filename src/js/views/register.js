@@ -18,7 +18,7 @@ function Register() {
 					<input className="register-input" type="password" placeholder="Repeat Password" />
 				</div>
 				<div className="register-buttons">
-					<button className="cta-select"> Create an Account </button>
+					<button className="cta-select-register"> Create an Account </button>
 				</div>
 			</div>
 		</div>
