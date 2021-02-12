@@ -1,8 +1,9 @@
 import React from "react";
 import "../../styles/HowTo.css";
-import searchIcon from "../../img/search-icon.png";
-import chefIcon from "../../img/chef-icon.png";
-import inputIngredients from "../../img/input-ingridients.png";
+import searchIcon from "../../img/searchhowto.png";
+import chefIcon from "../../img/chefhowto.png";
+import inputIngredients from "../../img/ingredientshowto.png";
+
 function HowTo() {
 	return (
 		<div className="howto">
