@@ -94,11 +94,10 @@ export const Footer = () => (
 					<div className="p-1 rounded border">
 						<div className="input-group">
 							<input
-								classNameName="footer-input"
+								className="footer-input form-control border-0 shadow-0 mt-0"
 								type="email"
 								placeholder="Enter your email address"
 								aria-describedby="button-addon1"
-								className="form-control border-0 shadow-0 mt-0"
 							/>
 							<div className="input-group-append">
 								<button id="button-addon1" type="submit" className="btn btn-link">

@@ -41,7 +41,7 @@ export const Header = () => {
 											</Link>
 										</li>
 										<li className="nav-item">
-											<Link class="page-scroll" to="/login">
+											<Link className="page-scroll" to="/login">
 												SignIn
 											</Link>
 										</li>
