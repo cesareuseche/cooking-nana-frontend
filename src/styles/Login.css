@@ -1,6 +1,7 @@
 .login {
     height: 100vh;
     background: url("../img/backgroundyellow.jpg");
+    background-position: 100%;
     display: grid;
     place-items: center;
 }
@@ -19,6 +20,10 @@
 }
 
 @media screen and (max-width: 1024px){
+    .login{
+        height: 120vh;
+    }
+
     .login__container{
         height: 100%;
     }
@@ -41,7 +46,7 @@
     border: solid 2px #ffffff;
     font-size: 20px;
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
     
 }
 

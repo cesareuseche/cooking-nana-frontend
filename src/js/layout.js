@@ -35,12 +35,10 @@ const Layout = () => {
 						<Route exact path="/login">
 							<Header />
 							<Login />
-							<Footer />
 						</Route>
 						<Route exact path="/register">
 							<Header />
 							<Register />
-							<Footer />
 						</Route>
 						<Route exact path="/recover">
 							<Recover />

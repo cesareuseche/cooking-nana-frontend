@@ -1,18 +1,18 @@
 .register {
     height: 100vh;
     background: url("../img/backgroundyellow.jpg");
+    background-position: 100%;
     display: grid;
     place-items: center;
 }
 .register__container > img {
     object-fit: contain;
-    height: 100px;
-    margin-bottom: 40px;
+    height: 80px;
 }
 .register__container {
     margin: 2% 2%;
     height: 86%;
-    padding: 50px;
+    padding: 40px;
     text-align: center;
     background-color: #ffffff;
     border-radius: 10px;
@@ -22,10 +22,16 @@
 @media screen and (max-width: 1024px) {
     .register__container{
         height: 100%;
+        padding: 35px;
     }
 
     .register__container img{
         margin-top: 40px;
+        margin-bottom: 0px;
+    } 
+
+    .register{
+        height: 100vh;
     }
 }
 
@@ -36,7 +42,7 @@
     border: solid 2px #ffffff;
     font-size: 20px;
     margin-top: 20px;
-    width: 50%;
+    width: 75%;
     
 }
 
