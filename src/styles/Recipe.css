@@ -1,47 +1,66 @@
-.content {
-    
-    width: 90%;
-    margin: auto;
-    min-height: 80vh;
-    align-items: center;
-    justify-items: center;
+.recipe-title{
+    display: flex;
+    margin-top: 10%;
+    flex-direction: column;
 }
 
-.intro-text h1{
-    font-size: 54px;
-    font-weight: 500;
+.recipe-title h1,h3{
+    margin: 10px 0px;
 }
 
-.intro-text h3{
-    align-items: center;
-    justify-items: center;
+@media screen and (max-width:991px){
+    .recipe-title h1, h3{
+        text-align: center;
+    }
 }
 
-.image-recipe *{
+.recipe-image{
+    max-width: 504px;
+    max-height: 405px;
+    margin-bottom: 10%;
+}
+
+.row-recipe-responsive{
+    display: flex;
+    justify-content: center;
     width: 100%;
-    height: auto;
 }
 
-.instructions {
-    
-    margin: 25px;
-    align-items: flex-start;
-    justify-items: center;
-    border: 1px solid black;
-    align-content: flex-start;
+@media screen and (max-width:991px){
+    .row-recipe-responsive{
+        margin-top: 10%;
+    }
 }
 
-.intro-text-detail *{
-    margin: 25px;
-    align-items: flex-start;
-    justify-items: center;
-    align-items: flex-start;
+.recipe-text{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15%;
 }
 
-.buttons *{
+.recipe-text h3{
+    text-align: center;
+}
 
-    font-size: 0.85em;
-    margin: auto;
-    justify-content: space-between;
-    align-items: center;
-  }
+@media screen and (max-width: 1200px){
+    .recipe-text{
+        margin-top: 0%;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    };
+    .recipe-image{
+        display: flex;
+        justify-content: center;
+        margin-left: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 767px){
+    .recipe-text p{
+        margin-left: 2rem;
+        text-align: center;
+    }
+}
