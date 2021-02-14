@@ -13,7 +13,6 @@ function Recipe() {
 						<img src={pasta} alt="" />
 					</div>
 					<div className="col-md-6 col-sm-12 recipe-text">
-						<h3>Recipe</h3>
 						<p>
 							First you must... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
