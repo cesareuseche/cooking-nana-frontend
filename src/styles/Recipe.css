@@ -43,7 +43,7 @@
 .recipe-text{
     display: flex;
     flex-direction: column;
-    margin-top: 15%;
+    margin-top: 17%;
 }
 
 @media screen and (max-width: 1024px){
