@@ -27,7 +27,7 @@
     height: 60vh;
 }
 
-.cta-select{
+.cta-select-home{
     border-radius: 40px;
     padding: 10px 30px;
     background: #FFDA00;
@@ -36,12 +36,12 @@
     margin-top: 20px;
 }
 
-.cta-select:focus {
+.cta-select-home:focus {
     outline: none;
     box-shadow: none;
   }
 
-.cta-select:hover{
+.cta-select-home:hover{
     border: 2px solid #FFDA00;
     background: #ffffff;
     color: black;
