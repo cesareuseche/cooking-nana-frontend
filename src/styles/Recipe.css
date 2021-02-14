@@ -26,9 +26,9 @@
     width: 100%;
 }
 
-@media screen and (max-width:991px){
+@media screen and (max-width:800px){
     .row-recipe-responsive{
-        margin-top: 10%;
+       margin-top: 10%;
     }
 }
 
