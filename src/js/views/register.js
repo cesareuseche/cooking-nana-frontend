@@ -75,8 +75,7 @@ function Register() {
 				</div>
 				<div className="register-buttons">
 					<button className="cta-select-register" onClick={register}>
-						{" "}
-						Create an Account{" "}
+						Create an Account
 					</button>
 				</div>
 			</div>
