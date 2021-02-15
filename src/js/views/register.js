@@ -13,13 +13,10 @@ function Register() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
-	const register = async e => {
+	const register = e => {
 		e.preventDefault();
-		if (password != repeatPassword) {
-			return alert("dont match");
-		}
-		const success = await actions.registerContact(email, name, last_name, username, password);
-		if (success) {
+		const response = actions.registerContact({ name, last_name, username, email, password });
+		if (response == true) {
 			console.log("usuario creado");
 			history.push("/");
 		} else {
@@ -56,7 +53,7 @@ function Register() {
 					/>
 					<input
 						className="register-input"
-						type="email"
+						type="text"
 						value={email}
 						placeholder="Email"
 						onChange={e => setEmail(e.target.value)}
