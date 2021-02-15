@@ -17,7 +17,7 @@ function Home() {
 					</div>
 					<div className="cta">
 						<Link to="/ingredient-selection">
-							<button className="cta-select">Start Cooking</button>
+							<button className="cta-select-home">Start Cooking</button>
 						</Link>
 					</div>
 				</div>

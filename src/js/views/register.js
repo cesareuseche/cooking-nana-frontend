@@ -1,21 +1,21 @@
-import React, { useState, useContext, useHistory } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
-
+import { useHistory } from "react-router-dom";
 import "../../styles/Register.css";
 import logo from "../../img/logo.png";
 
 function Register() {
-	const { actions } = useContext(Context);
-	const history = useHistory;
+	const { store, actions } = useContext(Context);
+	const history = useHistory("");
 	const [name, setName] = useState("");
-	const [lastName, setLastName] = useState("");
+	const [last_name, setLastName] = useState("");
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const register = e => {
 		e.preventDefault();
-		const response = actions.registerContact(name, lastName, username, email, password);
+		const response = actions.registerContact({ name, last_name, username, email, password });
 		if (response == true) {
 			console.log("usuario creado");
 			history.push("/");
@@ -40,7 +40,7 @@ function Register() {
 					<input
 						className="register-input"
 						type="text"
-						value={lastName}
+						value={last_name}
 						placeholder="Last Name"
 						onChange={e => setLastName(e.target.value)}
 					/>
@@ -74,9 +74,8 @@ function Register() {
 					/>
 				</div>
 				<div className="register-buttons">
-					<button className="cta-select" onClick={register}>
-						{" "}
-						Create an Account{" "}
+					<button className="cta-select-register" onClick={register}>
+						Create an Account
 					</button>
 				</div>
 			</div>

@@ -8,13 +8,13 @@ import Register from "./views/register";
 import Recover from "./views/recover";
 import Market from "./views/market";
 import Recipe from "./views/recipe";
+import Recipes from "./views/recipes";
 import Checkout from "./views/checkout";
 import IngredientSelection from "./views/ingredientSelection";
 import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
 import { Footer } from "./component/footer";
-import recipesResult from "./views/recipesResult";
 
 //create your first component
 const Layout = () => {
@@ -27,22 +27,21 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/">
-							<Header />
-							<Home />
-							<Footer />
-						</Route>
-						<Route exact path="/login">
-							<Header />
-							<Login />
-							<Footer />
-						</Route>
 						<Route exact path="/register">
 							<Header />
 							<Register />
 						</Route>
+						<Route exact path="/login">
+							<Header />
+							<Login />
+						</Route>
 						<Route exact path="/recover">
 							<Recover />
+						</Route>
+						<Route exact path="/ingredient-selection">
+							<Header />
+							<IngredientSelection />
+							<Footer />
 						</Route>
 						<Route exact path="/recipe">
 							<Header />
@@ -51,20 +50,20 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/recipes">
 							<Header />
-							<recipesResult />
+							<Recipes />
 							<Footer />
-						</Route>
-						<Route exact path="/cart">
-							<Header />
-							<Checkout />
 						</Route>
 						<Route exact path="/market">
 							<Header />
 							<Market />
 						</Route>
-						<Route exact path="/ingredient-selection">
+						<Route exact path="/cart">
 							<Header />
-							<IngredientSelection />
+							<Checkout />
+						</Route>
+						<Route exact path="/">
+							<Header />
+							<Home />
 							<Footer />
 						</Route>
 						<Route>

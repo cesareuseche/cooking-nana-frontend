@@ -3,6 +3,12 @@
     background: url("../img/backgroundhowto.jpg");
 }
 
+@media screen and (max-width: 1024px){
+    .howto{
+        height: 100%;
+    }
+}
+
 .howto__tile__section{
     margin-top: 3rem;
 }
@@ -17,6 +23,12 @@
     margin-top: 20%;
     background-color: white;
 
+}
+
+@media screen and (max-width: 1024px){
+    .rectangular-box{
+        width: 100%;
+    }
 }
 
 .icon{
