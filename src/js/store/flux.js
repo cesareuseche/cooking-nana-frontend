@@ -15,14 +15,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				let response = await fetch(url, {
 					method: "POST",
-					body: new_user
+					body: JSON.stringify({
+						email: email,
+						name: name,
+						last_name: last_name,
+						username: username,
+						password: password
+					})
 				});
 				if (response.ok) {
 					let created_user = JSON.stringify(response.body);
 					console.log(created_user);
 					return true;
 				} else {
-					console.log(response.body);
+					console.log(response);
 					console.log(response.status);
 					return false;
 				}
