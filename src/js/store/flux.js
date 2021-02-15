@@ -4,11 +4,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {},
 		actions: {
-			registerContact: async ({ nombre, last_name, username, email, password }) => {
+			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
+				actions = getActions();
 				let new_user = {
 					email: email,
-					name: nombre,
+					name: name,
 					last_name: last_name,
 					username: username,
 					password: password
@@ -16,18 +17,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(JSON.stringify(new_user));
 				let response = await fetch(url, {
 					method: "POST",
-					headers: { "Content-Type": "application-json" },
+					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(new_user)
 				});
 				if (response.ok) {
-					let created_user = JSON.stringify(response.body);
-					console.log(created_user);
+					actions.login(new_user.username, new_user.password);
 					return true;
 				} else {
-					console.log(JSON.stringify(response.body));
-					console.log(JSON.stringify(response.status));
+					console.log(response.statusText);
+					console.log(response.status);
 					return false;
 				}
+			},
+
+			login: async (username = null, email = null, password) => {
+				let url = BASE_URL + "/login";
+				let login_data = {};
+				if (username != null) {
+					login_data = {
+						username: username,
+						password: password
+					};
+				} else {
+					login_data = {
+						email: username,
+						password: password
+					};
+				}
+				let response = await fetch(url, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(login_data)
+				});
 			}
 		}
 	};
