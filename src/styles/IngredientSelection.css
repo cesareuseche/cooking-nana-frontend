@@ -1,8 +1,95 @@
-.principal{
+.ingredients-selection{
+    margin-top: 10%;
     display: flex;
-    margin-top: 50px;
+    justify-content: center;
 }
 
-.icon{
-    margin: 0px 10px 0px 10px;
+.ingredients-icons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.ingredients-icons img{
+    max-width: 50%;
+}
+
+.space-drodown{
+    margin-top: 5%;
+}
+
+.button-alignment{
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+.button-style button{
+    border-radius: 40px;
+    padding: 10px 30px;
+    background: #FFDA00;
+    border: solid 2px #ffffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.button-style button:hover{
+    border: 2px solid #FFDA00;
+    background: #ffffff;
+    color: black;
+}
+
+.btn-veggie{
+    border: #f5b132;
+    background: #f5b132;
+}
+
+.btn-veggie:hover{
+    border: #f5b132 1px solid;
+    background: #ffffff;
+    color: #f5b132;
+}
+
+.show > .btn-veggie.dropdown-toggle:focus{
+    border: #f5b132 2px solid;
+    background: #ffffff;
+    color: #f5b132;
+    box-shadow: none;
+}
+
+.btn-carb{
+    border: #ec751b;
+    background: #ec751b;
+}
+
+.btn-carb:hover{
+    background: #ffffff;
+    border: #ec751b solid 1px;
+    color: #ec751b;
+}
+
+.show > .btn-carb.dropdown-toggle:focus{
+    background: #ffffff;
+    border: #ec751b solid 1px;
+    color: #ec751b;
+    box-shadow: none;
+}
+
+.btn-protein{
+    background: #b71828;
+    border: #b71828;
+}
+
+.btn-protein:hover{
+    background: #ffffff;
+    border:#b71828  solid 1px;
+    color: #b71828;
+}
+
+.show > .btn-protein.dropdown-toggle:focus{
+    background: #ffffff;
+    border:#b71828  solid 2px !important;
+    color: #b71828;
+    box-shadow: none;
 }
