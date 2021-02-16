@@ -4,8 +4,33 @@ import protein from "../../img/protein.png";
 import veggie from "../../img/veggie.png";
 import carbs from "../../img/carbs.png";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 function IngredientSelection() {
+	const selectProteins = [
+		{ label: "Beef", value: "1" },
+		{ label: "Chicken", value: "2" },
+		{ label: "Fish", value: "3" },
+		{ label: "Lamb", value: "4" },
+		{ label: "Pork", value: "5" }
+	];
+
+	const selectCarbs = [
+		{ label: "Pasta", value: "1" },
+		{ label: "Rice", value: "2" },
+		{ label: "Potato", value: "3" },
+		{ label: "Bread", value: "4" },
+		{ label: "Beans", value: "5" }
+	];
+
+	const selectVegetables = [
+		{ label: "Carrot", value: "1" },
+		{ label: "Tomato", value: "2" },
+		{ label: "Onion", value: "3" },
+		{ label: "Peppers", value: "4" },
+		{ label: "Eggplant", value: "5" }
+	];
+
 	return (
 		<React.Fragment>
 			<div className="container">
@@ -17,105 +42,15 @@ function IngredientSelection() {
 				<div className="row">
 					<div className="col-md-4 ingredients-icons">
 						<img src={protein} alt="protein" />
-						<div className="drowdown space-drodown">
-							<button
-								className="btn btn-secondary btn-protein dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Select your Protein
-							</button>
-							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</div>
-						</div>
+						<Select captureMenuScroll={false} placeholder="Protein..." isMulti options={selectProteins} />
 					</div>
 					<div className="col-md-4 ingredients-icons">
 						<img src={carbs} alt="protein" />
-						<div className="drowdown space-drodown">
-							<button
-								className="btn btn-secondary btn-carb dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Select your Carb
-							</button>
-							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</div>
-						</div>
+						<Select placeholder="Carbs..." isMulti options={selectCarbs} captureMenuScroll={false} />
 					</div>
 					<div className="col-md-4 ingredients-icons">
 						<img src={veggie} alt="protein" />
-						<div className="drowdown space-drodown">
-							<button
-								className="btn btn-secondary btn-veggie dropdown-toggle "
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Select your Veggie
-							</button>
-							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</div>
-						</div>
+						<Select placeholder="Veggies..." isMulti options={selectVegetables} captureMenuScroll={false} />
 					</div>
 				</div>
 				<div className="row">
