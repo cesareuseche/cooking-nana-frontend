@@ -15,12 +15,12 @@ function Register() {
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const register = async e => {
 		e.preventDefault();
-		const succes = await actions.registerContact(name, last_name, username, email, password);
+		const succes = await actions.registerContact(email, name, last_name, username, password);
 		if (succes) {
-			console.log("usuario creado");
+			console.log("usuario creado register.js");
 			history.push("/");
 		} else {
-			console.log("usuario no creado");
+			console.log("usuario no creado register.js");
 		}
 	};
 
