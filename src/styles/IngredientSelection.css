@@ -52,6 +52,11 @@
       width: 70%;
   }
 
+  .css-26l3qy-menu{	
+    max-height: 200px !important;	
+    overflow-y: auto !important;	
+  }
+
   .css-yk16xz-control{
     border: solid 1px #FFDA00 !important;
   }
