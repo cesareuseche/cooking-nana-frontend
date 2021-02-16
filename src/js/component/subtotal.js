@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/Subtotal.css";
 import CurrencyFormat from "react-currency-format";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function Subtotal() {
 	return (
@@ -24,7 +25,11 @@ function Subtotal() {
 				thousandSeparator={true}
 				prefix={"$"}
 			/>
-			<button className="button-checkout">Proceed to Checkout</button>
+			<div className="button-wrapper">
+				<PayPalScriptProvider options={{ "client-id": "test" }}>
+					<PayPalButtons />
+				</PayPalScriptProvider>
+			</div>
 		</div>
 	);
 }
