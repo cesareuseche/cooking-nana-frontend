@@ -12,6 +12,8 @@ function IngredientSelection() {
 		{ label: "🍗Chicken", value: "2" },
 		{ label: "🐠Fish", value: "3" },
 		{ label: "🍖Lamb", value: "4" },
+		{ label: "🥓Pork", value: "5" },
+		{ label: "🍖Lamb", value: "4" },
 		{ label: "🥓Pork", value: "5" }
 	];
 
