@@ -8,27 +8,26 @@ import Select from "react-select";
 
 function IngredientSelection() {
 	const selectProteins = [
-		{ label: "Beef", value: "1" },
-		{ label: "Chicken", value: "2" },
-		{ label: "Fish", value: "3" },
-		{ label: "Lamb", value: "4" },
-		{ label: "Pork", value: "5" }
+		{ label: "🥩Beef", value: "1" },
+		{ label: "🍗Chicken", value: "2" },
+		{ label: "🐠Fish", value: "3" },
+		{ label: "🍖Lamb", value: "4" },
+		{ label: "🥓Pork", value: "5" }
 	];
 
 	const selectCarbs = [
-		{ label: "Pasta", value: "1" },
-		{ label: "Rice", value: "2" },
-		{ label: "Potato", value: "3" },
-		{ label: "Bread", value: "4" },
-		{ label: "Beans", value: "5" }
+		{ label: "🍝Pasta", value: "1" },
+		{ label: "🍚Rice", value: "2" },
+		{ label: "🥔Potato", value: "3" },
+		{ label: "🍞Bread", value: "4" }
 	];
 
 	const selectVegetables = [
-		{ label: "Carrot", value: "1" },
-		{ label: "Tomato", value: "2" },
-		{ label: "Onion", value: "3" },
-		{ label: "Peppers", value: "4" },
-		{ label: "Eggplant", value: "5" }
+		{ label: "🥕Carrot", value: "1" },
+		{ label: "🍅Tomato", value: "2" },
+		{ label: "🧅Onion", value: "3" },
+		{ label: "🫑Peppers", value: "4" },
+		{ label: "🥦Brocoli", value: "5" }
 	];
 
 	return (
