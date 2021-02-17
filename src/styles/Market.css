@@ -29,6 +29,14 @@
     z-index: 1;
 }
 
+@media (max-width: 890px){
+    .product-row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 .market-container{
     background-color:  #F8F8F8;
 }
