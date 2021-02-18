@@ -4,7 +4,7 @@ import "../../styles/RecipeResults.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function RecipesResult({ img, name, id, description, match}) {
+function RecipesResult({ img, name, id, description, match }) {
 	return (
 		<React.Fragment>
 			<div className="card-group card-size">
