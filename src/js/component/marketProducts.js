@@ -32,8 +32,8 @@ function MarketProducts({ title, image, price, rating }) {
 
 MarketProducts.propTypes = {
 	title: PropTypes.string,
-	image: PropTypes.src,
-	price: PropTypes.price,
+	image: PropTypes.img,
+	price: PropTypes.string,
 	rating: PropTypes.number
 };
 

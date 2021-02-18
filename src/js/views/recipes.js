@@ -1,39 +1,60 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/Recipes.css";
-import bowl from "../../img/poke.jpg";
-import pasta from "../../img/pasta.jpg";
-import risotto from "../../img/risotto.jpg";
 import RecipesResult from "../component/RecipeResults";
+import PropTypes from "prop-types";
 
-function Recipes() {
+function Recipes(SelectedIngredients) {
+	const { store, actions } = useContext(Context);
+	let recipes = [];
+	useEffect(() => {
+			let ingredients = [];
+			let matchs = [];
+			let counter = 0;
+			let counter1 = 0;
+			let match = 0;
+			for (let i = 0; i < store.recipes.length; i++) {
+				ingredients = store.recipes[i].ingredients;
+				for (let j = 0; j < SelectedIngredients.length; j++) {
+					for (let k = 0; k < ingredients.length; k++) {
+						if (SelectedIngredients[j] == ingredients[k]) {
+							counter++;
+							break;
+						}
+					}
+				}
+				counter1 = store.recipes[i].ingredients.length;
+				match = (counter * 100) / counter1;
+				if (match >= 70) {
+					matchs.push(match);
+					recipes.push(store.recipes[i]);
+				}
+		}
+	});
+
 	return (
 		<React.Fragment>
 			<div className="container-fluid presentation-width recipe-result">
 				<div className="row mobile-margin first-result-align" />
 				<div className="recipe-row col-md-12">
-					<RecipesResult
-						image={bowl}
-						description={`This is the snippet of the recipe`}
-						title={`Hawaian Bowl`}
-					/>
-				</div>
-				<div className="recipe-row col-md-12">
-					<RecipesResult
-						image={pasta}
-						description={`This is the snippet of the recipe`}
-						title={`Hawaian Bowl`}
-					/>
-				</div>
-				<div className="recipe-row col-md-12">
-					<RecipesResult
-						image={risotto}
-						description={`This is the snippet of the recipe`}
-						title={`Hawaian Bowl`}
-					/>
+					{recipes.map((recipe, i) => (
+						<RecipesResult
+							key={i}
+							img={recipe.img_url}
+							description={recipe.description}
+							name={recipe.name}
+							id={recipe.id}
+							match={matchs[i]}
+						/>
+					))}
 				</div>
 			</div>
 		</React.Fragment>
 	);
 }
+
+Recipes.propTypes = {
+	ingredients: PropTypes.array
+};
 
 export default Recipes;

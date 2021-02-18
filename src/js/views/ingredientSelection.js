@@ -30,6 +30,13 @@ function IngredientSelection() {
 		{ label: "🥦Brocoli", value: "5" }
 	];
 
+	// function limpiador(label){
+	// 	for(let i = 0; i < label.length; i++)
+	// 	{
+	// 		if(label.charAt(i))
+	// 	}
+	// }
+
 	return (
 		<React.Fragment>
 			<div className="wrapper">
