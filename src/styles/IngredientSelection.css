@@ -2,6 +2,7 @@
     margin-top: 10%;
     display: flex;
     justify-content: center;
+    font-family: 'Hammersmith One', sans-serif;
 }
 
 @media (max-width: 800px){
@@ -39,6 +40,7 @@
     border: solid 2px #ffffff;
     font-size: 20px;
     margin-top: 20px;
+    margin-bottom: 70px;
 }
 
 .button-style button:hover{
@@ -81,4 +83,10 @@
 
 .css-1okebmr-indicatorSeparator{
     background-color: black !important;
+}
+
+.wrapper{
+    background: url(../img/ingredienteback.png) ;
+    background-position: 100%;
+    width: 100%;
 }
