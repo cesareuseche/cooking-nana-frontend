@@ -8,7 +8,6 @@ function Recipes(SelectedIngredients) {
 	const { store, actions } = useContext(Context);
 	let recipes = [];
 	useEffect(() => {
-		function searchRecipes() {
 			let ingredients = [];
 			let matchs = [];
 			let counter = 0;
@@ -30,7 +29,6 @@ function Recipes(SelectedIngredients) {
 					matchs.push(match);
 					recipes.push(store.recipes[i]);
 				}
-			}
 		}
 	});
 
