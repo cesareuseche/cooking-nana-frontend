@@ -3,7 +3,8 @@ const BASE_URL = "http://localhost:8080";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: {}
+			user: {},
+			recipes: []
 		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
@@ -30,8 +31,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			check: async (token = null) => {
+				let url = BASE_URL + "/check";
+				let store = getStore();
+				let customHeader = new Headers({
+					Authorization: "Bearer " + token
+				});
+				let response = await fetch(url, {
+					method: "GET",
+					headers: customHeader
+				});
+				if (response.ok) {
+					console.log(store.user.name + " esta logueado");
+					return true;
+				} else {
+					setStore({ user: {} });
+					return false;
+				}
+			},
+
 			login: async (user, password) => {
 				let url = BASE_URL + "/login";
+				let actions = getActions();
+				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
 
@@ -61,28 +83,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(login_data)
 				});
-				let respuesta = await response.json();
-				setStore({ user: respuesta });
+				let information = await response.json();
+
+				setStore({ user: information });
 				if (response.ok) {
 					console.log("login aprobado");
-					url = BASE_URL + "/check";
-					const store = getStore();
-					let customHeader = new Headers({
-						Authorization: "Bearer " + store.user.jwt
-					});
-					let response1 = await fetch(url, {
-						method: "GET",
-						headers: customHeader
-					});
-
-					if (response1.ok) {
+					let response2 = actions.check(store.user.jwt);
+					if (response2) {
 						console.log("check aprobado");
+						return true;
 					} else {
 						console.log("check reprobado");
+						return false;
 					}
-					return true;
 				} else {
 					console.log("login reprobado");
+					return false;
+				}
+			},
+
+			recipes: async () => {
+				let url = BASE_URL + "/recipes";
+				let response = await (url,
+				{
+					method: "GET"
+				});
+				let information = response.json();
+				if (response.ok) {
+					setStore({ recipes: information });
+					console.log("te traje las recetas");
+					return true;
+				} else {
+					return false;
 				}
 			}
 		}
