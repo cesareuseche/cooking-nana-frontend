@@ -30,6 +30,13 @@ function IngredientSelection() {
 		{ label: "🥦Brocoli", value: "5" }
 	];
 
+	// function limpiador(label){
+	// 	for(let i = 0; i < label.length; i++)
+	// 	{
+	// 		if(label.charAt(i))
+	// 	}
+	// }
+
 	return (
 		<React.Fragment>
 			<div className="container">
@@ -41,7 +48,7 @@ function IngredientSelection() {
 				<div className="row">
 					<div className="col-md-4 ingredients-icons">
 						<img src={protein} alt="protein" />
-						<Select captureMenuScroll={false} placeholder="Protein..." isMulti options={selectProteins} />
+						<Select placeholder="Protein..." isMulti options={selectProteins} captureMenuScroll={false} />
 					</div>
 					<div className="col-md-4 ingredients-icons">
 						<img src={carbs} alt="protein" />
