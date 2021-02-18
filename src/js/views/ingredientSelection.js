@@ -46,17 +46,6 @@ function IngredientSelection() {
 							<h1>Choose your ingredients</h1>
 						</div>
 					</div>
-<<<<<<< HEAD
-				</div>
-				<div className="row">
-					<div className="col-md-4 ingredients-icons">
-						<img src={protein} alt="protein" />
-						<Select placeholder="Protein..." isMulti options={selectProteins} captureMenuScroll={false} />
-					</div>
-					<div className="col-md-4 ingredients-icons">
-						<img src={carbs} alt="protein" />
-						<Select placeholder="Carbs..." isMulti options={selectCarbs} captureMenuScroll={false} />
-=======
 					<div className="row">
 						<div className="col-md-4 ingredients-icons">
 							<img src={protein} alt="protein" />
@@ -80,7 +69,6 @@ function IngredientSelection() {
 								captureMenuScroll={false}
 							/>
 						</div>
->>>>>>> origin/develop
 					</div>
 					<div className="row">
 						<div className="col-md-12 button-alignment button-style">
