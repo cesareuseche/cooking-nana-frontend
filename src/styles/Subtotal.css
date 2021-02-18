@@ -8,6 +8,7 @@
     background-color: #f3f3f3;
     border: 1px solid #dddddd;
     border-radius: 3px;
+    font-family: 'Hammersmith One', sans-serif;
 }
 
 .subtotal__gift{
@@ -20,15 +21,6 @@
     margin-top: 0px !important;
 }
 
-.button-checkout{
-    margin-top: 2rem;
-    border: 1px solid #ffda02;
-    border-radius: 20px;
-    background: #ffda02;
-}
-
-.button-checkout:hover{
-    border: 2px solid #FFDA00;
-    background: #ffffff;
-    color: black;
+.button-wrapper{
+    margin-top: 15% !important;
 }

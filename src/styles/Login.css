@@ -4,6 +4,7 @@
     background-position: 100%;
     display: grid;
     place-items: center;
+    font-family: 'Hammersmith One', sans-serif;
 }
 .login__container > img {
     object-fit: contain;
