@@ -8,27 +8,27 @@ function Recipes(SelectedIngredients) {
 	const { store, actions } = useContext(Context);
 	let recipes = [];
 	useEffect(() => {
-			let ingredients = [];
-			let matchs = [];
-			let counter = 0;
-			let counter1 = 0;
-			let match = 0;
-			for (let i = 0; i < store.recipes.length; i++) {
-				ingredients = store.recipes[i].ingredients;
-				for (let j = 0; j < SelectedIngredients.length; j++) {
-					for (let k = 0; k < ingredients.length; k++) {
-						if (SelectedIngredients[j] == ingredients[k]) {
-							counter++;
-							break;
-						}
+		let ingredients = [];
+		let matchs = [];
+		let counter = 0;
+		let counter1 = 0;
+		let match = 0;
+		for (let i = 0; i < store.recipes.length; i++) {
+			ingredients = store.recipes[i].ingredients;
+			for (let j = 0; j < SelectedIngredients.length; j++) {
+				for (let k = 0; k < ingredients.length; k++) {
+					if (SelectedIngredients[j] == ingredients[k]) {
+						counter++;
+						break;
 					}
 				}
-				counter1 = store.recipes[i].ingredients.length;
-				match = (counter * 100) / counter1;
-				if (match >= 70) {
-					matchs.push(match);
-					recipes.push(store.recipes[i]);
-				}
+			}
+			counter1 = store.recipes[i].ingredients.length;
+			match = (counter * 100) / counter1;
+			if (match >= 70) {
+				matchs.push(match);
+				recipes.push(store.recipes[i]);
+			}
 		}
 	});
 
