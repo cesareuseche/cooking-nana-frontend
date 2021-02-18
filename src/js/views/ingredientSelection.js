@@ -32,31 +32,43 @@ function IngredientSelection() {
 
 	return (
 		<React.Fragment>
-			<div className="container">
-				<div className="row">
-					<div className="col-md-12 ingredients-selection">
-						<h1>Choose your ingredients</h1>
+			<div className="wrapper">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-12 ingredients-selection">
+							<h1>Choose your ingredients</h1>
+						</div>
 					</div>
-				</div>
-				<div className="row">
-					<div className="col-md-4 ingredients-icons">
-						<img src={protein} alt="protein" />
-						<Select captureMenuScroll={false} placeholder="Protein..." isMulti options={selectProteins} />
+					<div className="row">
+						<div className="col-md-4 ingredients-icons">
+							<img src={protein} alt="protein" />
+							<Select
+								captureMenuScroll={false}
+								placeholder="Protein..."
+								isMulti
+								options={selectProteins}
+							/>
+						</div>
+						<div className="col-md-4 ingredients-icons">
+							<img src={carbs} alt="protein" />
+							<Select placeholder="Carbs..." isMulti options={selectCarbs} captureMenuScroll={false} />
+						</div>
+						<div className="col-md-4 ingredients-icons">
+							<img src={veggie} alt="protein" />
+							<Select
+								placeholder="Veggies..."
+								isMulti
+								options={selectVegetables}
+								captureMenuScroll={false}
+							/>
+						</div>
 					</div>
-					<div className="col-md-4 ingredients-icons">
-						<img src={carbs} alt="protein" />
-						<Select placeholder="Carbs..." isMulti options={selectCarbs} captureMenuScroll={false} />
-					</div>
-					<div className="col-md-4 ingredients-icons">
-						<img src={veggie} alt="protein" />
-						<Select placeholder="Veggies..." isMulti options={selectVegetables} captureMenuScroll={false} />
-					</div>
-				</div>
-				<div className="row">
-					<div className="col-md-12 button-alignment button-style">
-						<Link to="/recipes">
-							<button>Search your Recipe</button>
-						</Link>
+					<div className="row">
+						<div className="col-md-12 button-alignment button-style">
+							<Link to="/recipes">
+								<button>Search your Recipe</button>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>

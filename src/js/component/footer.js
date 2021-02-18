@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import cookingNanaLogo from "../../img/Cooking-nana.png";
+import "../../styles/footer.css";
 
 export const Footer = () => (
-	<footer className="bg-white">
+	<footer className="bg-white footer">
 		<div className="container py-5">
 			<div className="row py-4">
 				<div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
