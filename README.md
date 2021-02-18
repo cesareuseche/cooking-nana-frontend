@@ -97,3 +97,61 @@ To publish your website you need to push your code to your github repository and
 $ npm run deploy
 ```
 Note: You will need to [configure github pages for the branch gh-pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages)
+
+
+
+# TO USE THIS FRONT-END:
+
+## Some special dependencies:
+
+### PayPal
+	```sh
+	$ npm install @paypal/react-paypal-js
+	```	
+
+### React-Bootstrap
+	```sh
+	$ npm install react-bootstrap bootstrap
+	```	
+
+### React-Select
+	```sh
+	$ npm install react-select
+	```	
+
+## About CORS
+
+This front-end use JASON Web Tokens (jwt), and it comes configured to cache the token, so it can cause communication problems with the back-end in some browsers. For this it is recommended to change the address of the localhost server (located in package.json) so that it is not implicitly `locahost:3000`, and instead make this change:
+
+	"start": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0 --port 3000"
+
+a:
+
+	"start": "webpack-dev-server --config webpack.dev.js --host 127.0.0.1 --port 3000",
+
+
+### [🙎‍♂️ About us]
+
+We are making this API as part of back-end of our final 4Geeks Academy Fullstack course project.
+    
+In alphabetical order:
+
+[Becerra, Humberto](https://github.com/humbi-exe) /
+[Martínez, Antonio](https://github.com/metantonio) /
+[Pérez, Vincent](https://github.com/vinsh15) /
+[Useche, César](https://github.com/cesareuseche) /
+
+<p align="center">
+  <a href="https://github.com/vinsh15/backend-prototype">
+    <img src="https://github.com/cesareuseche/cooking-nana-frontend/blob/master/src/img/logo.png" alt="Cooking-nana" width="100px" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/cesareuseche/backend-prototype">
+    <img src="https://img.shields.io/website?down_message=down&up_color=green&up_message=online&url=https%3A%2F%2Fsupercookie.me" alt="Back-End">
+  </a>
+  <a href="https://github.com/vinsh15/backend-prototype">
+    <img src="https://img.shields.io/github/license/jonasstrehle/supercookie" alt="License">
+  </a>
+</p>
