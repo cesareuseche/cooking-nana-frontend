@@ -22,6 +22,7 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
+			state.actions.recipes();
 			state.actions.check(state.store.user.jwt);
 			/**
 			 * EDIT THIS!
