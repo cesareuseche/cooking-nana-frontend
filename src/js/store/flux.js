@@ -104,14 +104,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			recipes: async () => {
 				let url = BASE_URL + "/recipes";
-				let response = await (url,
-				{
+				let store = getStore();
+				let response = await fetch(url, {
 					method: "GET"
 				});
-				let information = response.json();
+				let information = await response.json();
 				if (response.ok) {
 					setStore({ recipes: information });
-					console.log("te traje las recetas");
+					console.log(store.recipes);
 					return true;
 				} else {
 					return false;

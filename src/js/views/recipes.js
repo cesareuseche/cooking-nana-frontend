@@ -4,7 +4,7 @@ import "../../styles/Recipes.css";
 import RecipesResult from "../component/RecipeResults";
 import PropTypes from "prop-types";
 
-function Recipes(SelectedIngredients) {
+function Recipes(selectedIngredients) {
 	const { store, actions } = useContext(Context);
 	let recipes = [];
 	useEffect(() => {
@@ -15,9 +15,9 @@ function Recipes(SelectedIngredients) {
 		let match = 0;
 		for (let i = 0; i < store.recipes.length; i++) {
 			ingredients = store.recipes[i].ingredients;
-			for (let j = 0; j < SelectedIngredients.length; j++) {
+			for (let j = 0; j < selectedIngredients.length; j++) {
 				for (let k = 0; k < ingredients.length; k++) {
-					if (SelectedIngredients[j] == ingredients[k]) {
+					if (selectedIngredients[j] == ingredients[k]) {
 						counter++;
 						break;
 					}
