@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/Recipes.css";
 import RecipesResult from "../component/RecipeResults";
-import PropTypes from "prop-types";
 
-function Recipes(selectedIngredients) {
+function Recipes() {
 	const { store, actions } = useContext(Context);
 	let recipes = [];
 	useEffect(() => {
 		let ingredients = [];
+		let selectedIngredients = store.selectedIngredients;
 		let matchs = [];
 		let counter = 0;
 		let counter1 = 0;
@@ -52,9 +52,5 @@ function Recipes(selectedIngredients) {
 		</React.Fragment>
 	);
 }
-
-Recipes.propTypes = {
-	ingredients: PropTypes.array
-};
 
 export default Recipes;
