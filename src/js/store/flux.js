@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {},
-			recipes: []
+			recipes: [],
+			selectedIngredients: []
 		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
@@ -116,6 +117,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					return false;
 				}
+			},
+
+			saveSelectedIngredients: selectedIngredientes => {
+				setStore({ selectedIngredientes: selectedIngredientes });
 			}
 		}
 	};
