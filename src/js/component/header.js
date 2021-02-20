@@ -6,23 +6,23 @@ import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
 
 export const Header = () => {
-	const logueado = false;
-	const { store, actions } = useContext(Context);
+	// const logueado = false;
+	// const { store, actions } = useContext(Context);
 
-	const checking = async () => {
-		const succes = await actions.check();
-		if (succes) {
-			logueado = true;
-			console.log(`el login esta en ${logueado}`);
-			console.log(`${localStorage.getItem("name")} estas logueado`);
-		} else {
-			console.log(`el login esta en ${logueado}`);
-		}
-	};
+	// const checking = async () => {
+	// 	const succes = await actions.check();
+	// 	if (succes) {
+	// 		logueado = true;
+	// 		console.log(`el login esta en ${logueado}`);
+	// 		console.log(`${localStorage.getItem("name")} estas logueado`);
+	// 	} else {
+	// 		console.log(`el login esta en ${logueado}`);
+	// 	}
+	// };
 
-	useEffect(() => {
-		checking();
-	}, []);
+	// useEffect(() => {
+	// 	checking();
+	// }, []);
 
 	return (
 		<div className="header_area">
