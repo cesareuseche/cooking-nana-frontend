@@ -2,10 +2,7 @@ const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {
-			user: {},
-			recipes: []
-		},
+		store: {},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -31,21 +28,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			check: async (token = null) => {
+			check: async () => {
 				let url = BASE_URL + "/check";
-				let store = getStore();
 				let customHeader = new Headers({
-					Authorization: "Bearer " + token
+					Authorization: "Bearer " + localStorage.getItem("token")
 				});
 				let response = await fetch(url, {
 					method: "GET",
 					headers: customHeader
 				});
 				if (response.ok) {
-					console.log(store.user.name + " esta logueado");
+					console.log(localStorage.getItem("name") + " esta logueado");
 					return true;
 				} else {
-					setStore({ user: {} });
+					localStorage.token = "";
+					localStorage.name = "";
 					return false;
 				}
 			},
@@ -56,6 +53,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
+				localStorage.setItem("token", "");
+				localStorage.setItem("name", "");
 
 				for (var i = 0; i < user.length; i++) {
 					if (atCounter) {
@@ -85,10 +84,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				let information = await response.json();
 
-				setStore({ user: information });
 				if (response.ok) {
+					localStorage.token = information.jwt;
+					localStorage.name = information.name;
 					console.log("login aprobado");
-					let response2 = actions.check(store.user.jwt);
+					let response2 = actions.check();
 					if (response2) {
 						console.log("check aprobado");
 						return true;
