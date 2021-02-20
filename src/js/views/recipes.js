@@ -37,7 +37,7 @@ function Recipes() {
 			<div className="container-fluid presentation-width recipe-result">
 				<div className="row mobile-margin first-result-align" />
 				<div className="recipe-row col-md-12">
-					{recipes.map((recipe, i) => (
+					{/* {recipes.map((recipe, i) => (
 						<RecipesResult
 							key={i}
 							img={recipe.img_url}
@@ -46,7 +46,7 @@ function Recipes() {
 							id={recipe.id}
 							match={matchs[i]}
 						/>
-					))}
+					))} */}
 				</div>
 			</div>
 		</React.Fragment>
