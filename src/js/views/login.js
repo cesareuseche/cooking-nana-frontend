@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
+import { auth, provider } from "../store/firebase";
 
 function Login() {
 	const { store, actions } = useContext(Context);
@@ -19,6 +20,16 @@ function Login() {
 		} else {
 			console.log("usuario no logueado login.js");
 		}
+	};
+
+	const signInWithGoogle = e => {
+		auth.signInWithPopup(provider)
+			.then(result => {
+				console.log(result);
+			})
+			.catch(error => {
+				alert(error.message);
+			});
 	};
 
 	return (
