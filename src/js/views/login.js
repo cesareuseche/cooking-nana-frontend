@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
+import { auth, provider } from "../store/firebase";
 
 function Login() {
 	const { store, actions } = useContext(Context);
@@ -19,6 +20,16 @@ function Login() {
 		} else {
 			console.log("usuario no logueado login.js");
 		}
+	};
+
+	const signInWithGoogle = e => {
+		auth.signInWithPopup(provider)
+			.then(result => {
+				console.log(result);
+			})
+			.catch(error => {
+				alert(error.message);
+			});
 	};
 
 	return (
@@ -43,7 +54,10 @@ function Login() {
 						{" "}
 						Sign In
 					</button>
-					<button className="cta-select"> Sign In with Google</button>
+					<button className="cta-select" onClick={signInWithGoogle}>
+						{" "}
+						Sign In with Google
+					</button>
 					<Link to="/register">
 						<button className="cta-select"> Create an Account</button>
 					</Link>
