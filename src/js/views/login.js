@@ -25,7 +25,9 @@ function Login() {
 	const signInWithGoogle = e => {
 		auth.signInWithPopup(provider)
 			.then(result => {
-				console.log(result);
+				if (result) {
+					history.push("/");
+				}
 			})
 			.catch(error => {
 				alert(error.message);

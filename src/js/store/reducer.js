@@ -3,12 +3,20 @@ export const initialState = {
 	user: null
 };
 
+export const actionTypes = {
+	SET_USER: "SET_USER"
+};
 // Selector inside of the reducer
 export const getCartTotal = cart => cart.reduce((amount, item) => item.price + amount, 0);
 
 const reducer = (state, action) => {
 	console.log(action);
 	switch (action.type) {
+		case actionTypes.SET_USER:
+			return {
+				...state,
+				user: action.user
+			};
 		case "ADD_TO_CART":
 			return {
 				...state,
@@ -30,11 +38,6 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				cart: newCart
-			};
-		case "SET_USER":
-			return {
-				...state,
-				user: action.user
 			};
 		default:
 			return state;
