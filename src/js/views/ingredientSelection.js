@@ -10,6 +10,7 @@ import Select from "react-select";
 //import { ConcatenationScope } from "webpack";
 
 function IngredientSelection() {
+	const history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [proteins, setProteins] = useState([]);
 	const [carbs, setCarbs] = useState([]);
@@ -33,8 +34,8 @@ function IngredientSelection() {
 				console.log(x[i]);
 			}
 		}
-		actions.saveSelectedIngredients(x);
-		//history.pushState("/recipes");
+		// actions.saveSelectedIngredients(x);
+		history.push("/recipes");
 	}
 
 	const get = e => {};
