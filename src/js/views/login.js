@@ -26,6 +26,10 @@ function Login() {
 		auth.signInWithPopup(provider)
 			.then(result => {
 				if (result) {
+					sessionStorage.logueado = true;
+					sessionStorage.setItem("token", result.credential.accessToken);
+					sessionStorage.setItem("name", result.additionalUserInfo.profile.given_name);
+					console.log(result);
 					history.push("/");
 				}
 			})

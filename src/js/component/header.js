@@ -62,8 +62,10 @@ export const Header = () => {
 											</Link>
 										</li>
 										<li className="nav-item">
-											<Link className="page-scroll" to="/login">
-												SignIn
+											<Link
+												className="page-scroll"
+												to={!sessionStorage.getItem("logueado") && "/login"}>
+												{!sessionStorage.getItem("logueado") ? "SignIn" : "SignOut"}
 											</Link>
 										</li>
 										<li className="nav-item">
@@ -80,6 +82,13 @@ export const Header = () => {
 											<Link className="page-scroll icon-cart" to="/cart">
 												<img src={cartIcon} />
 												<span>{cart.length}</span>
+											</Link>
+										</li>
+										<li className="nav-item">
+											<Link className="">
+												{!sessionStorage.getItem("logueado")
+													? "Guest"
+													: sessionStorage.getItem("name")}
 											</Link>
 										</li>
 									</ul>
