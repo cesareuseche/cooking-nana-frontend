@@ -3,9 +3,6 @@ const BASE_URL = "http://localhost:8080";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: {},
-			recipes: [],
-			selectedIngredients: []
 		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {

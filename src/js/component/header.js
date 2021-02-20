@@ -7,27 +7,7 @@ import cartIcon from "../../img/newcart.png";
 import { useStateValue } from "../store/stateProvider";
 
 export const Header = () => {
-<<<<<<< HEAD
-	// const logueado = false;
-	// const { store, actions } = useContext(Context);
-
-	// const checking = async () => {
-	// 	const succes = await actions.check();
-	// 	if (succes) {
-	// 		logueado = true;
-	// 		console.log(`el login esta en ${logueado}`);
-	// 		console.log(`${localStorage.getItem("name")} estas logueado`);
-	// 	} else {
-	// 		console.log(`el login esta en ${logueado}`);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	checking();
-	// }, []);
-=======
 	const [{ cart }, dispatch] = useStateValue();
->>>>>>> 5dfbbbcd1c16e5793e544873c3aa2e1e85b6a50d
 
 	return (
 		<div className="header_area">
