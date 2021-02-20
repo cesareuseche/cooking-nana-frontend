@@ -22,7 +22,7 @@ function Login() {
 	};
 
 	return (
-		<div className="login">
+		<div className="login background-login">
 			<div className="login__container">
 				<img src={logo} alt="" />
 				<h1>Sign in to Cooking Nana</h1>
