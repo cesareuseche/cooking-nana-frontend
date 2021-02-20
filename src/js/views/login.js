@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
+import { auth, provider } from "../store/firebase";
 
 function Login() {
 	const { store, actions } = useContext(Context);
@@ -21,8 +22,20 @@ function Login() {
 		}
 	};
 
+	const signInWithGoogle = e => {
+		auth.signInWithPopup(provider)
+			.then(result => {
+				if (result) {
+					history.push("/");
+				}
+			})
+			.catch(error => {
+				alert(error.message);
+			});
+	};
+
 	return (
-		<div className="login">
+		<div className="login background-login">
 			<div className="login__container">
 				<img src={logo} alt="" />
 				<h1>Sign in to Cooking Nana</h1>
@@ -43,7 +56,10 @@ function Login() {
 						{" "}
 						Sign In
 					</button>
-					<button className="cta-select"> Sign In with Google</button>
+					<button className="cta-select" onClick={signInWithGoogle}>
+						{" "}
+						Sign In with Google
+					</button>
 					<Link to="/register">
 						<button className="cta-select"> Create an Account</button>
 					</Link>

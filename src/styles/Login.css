@@ -1,11 +1,16 @@
 .login {
     height: 100vh;
-    background: url("../img/backgroundyellow.jpg");
-    background-position: 100%;
     display: grid;
     place-items: center;
     font-family: 'Hammersmith One', sans-serif;
 }
+
+.background-login{
+    background: url("../img/backgroundyellow.jpg");
+    background-size: cover ;
+    background-position: 100%;
+}
+
 .login__container > img {
     object-fit: contain;
     height: 100px;

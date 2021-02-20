@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
+import { useStateValue } from "../store/stateProvider";
 
 export const Header = () => {
+<<<<<<< HEAD
 	// const logueado = false;
 	// const { store, actions } = useContext(Context);
 
@@ -23,6 +25,9 @@ export const Header = () => {
 	// useEffect(() => {
 	// 	checking();
 	// }, []);
+=======
+	const [{ cart }, dispatch] = useStateValue();
+>>>>>>> 5dfbbbcd1c16e5793e544873c3aa2e1e85b6a50d
 
 	return (
 		<div className="header_area">
@@ -77,7 +82,7 @@ export const Header = () => {
 										<li className="nav-item">
 											<Link className="page-scroll icon-cart" to="/cart">
 												<img src={cartIcon} />
-												<span>0</span>
+												<span>{cart.length}</span>
 											</Link>
 										</li>
 									</ul>
