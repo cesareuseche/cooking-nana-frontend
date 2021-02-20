@@ -14,6 +14,6 @@ export const useStateValue = () => useContext(StateContext);
 
 StateProvider.propTypes = {
 	reducer: PropTypes.func.isRequired,
-	initialState: PropTypes.func.isRequired,
-	children: PropTypes.func.isRequired
+	initialState: PropTypes.object.isRequired,
+	children: PropTypes.object.isRequired
 };
