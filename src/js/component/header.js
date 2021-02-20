@@ -8,22 +8,22 @@ import { useStateValue } from "../store/stateProvider";
 
 export const Header = () => {
 	const [{ cart }, dispatch] = useStateValue();
-	// const logueado = false;	
-	// const { store, actions } = useContext(Context);	
+	// const logueado = false;
+	// const { store, actions } = useContext(Context);
 
-	// const checking = async () => {	
-	// 	const succes = await actions.check();	
-	// 	if (succes) {	
-	// 		logueado = true;	
-	// 		console.log(`el login esta en ${logueado}`);	
-	// 		console.log(`${localStorage.getItem("name")} estas logueado`);	
-	// 	} else {	
-	// 		console.log(`el login esta en ${logueado}`);	
-	// 	}	
-	// };	
+	// const checking = async () => {
+	// 	const succes = await actions.check();
+	// 	if (succes) {
+	// 		logueado = true;
+	// 		console.log(`el login esta en ${logueado}`);
+	// 		console.log(`${localStorage.getItem("name")} estas logueado`);
+	// 	} else {
+	// 		console.log(`el login esta en ${logueado}`);
+	// 	}
+	// };
 
-	// useEffect(() => {	
-	// 	checking();	
+	// useEffect(() => {
+	// 	checking();
 	// }, []);
 
 	return (

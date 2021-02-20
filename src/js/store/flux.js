@@ -2,8 +2,7 @@ const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {
-		},
+		store: {},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
