@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
+import { useStateValue } from "../store/stateProvider";
 
 export const Header = () => {
+	const [{ cart }, dispatch] = useStateValue();
+
 	return (
 		<div className="header_area">
 			<div className="header_navbar">
@@ -58,7 +61,7 @@ export const Header = () => {
 										<li className="nav-item">
 											<Link className="page-scroll icon-cart" to="/cart">
 												<img src={cartIcon} />
-												<span>0</span>
+												<span>{cart.length}</span>
 											</Link>
 										</li>
 									</ul>

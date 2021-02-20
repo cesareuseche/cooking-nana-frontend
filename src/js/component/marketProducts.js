@@ -2,8 +2,23 @@ import React from "react";
 import "../../styles/MarketProducts.css";
 import wine1 from "../../img/wine1.jpg";
 import PropTypes from "prop-types";
+import { useStateValue } from "../store/stateProvider";
 
 function MarketProducts({ title, image, price, rating }) {
+	const [{ cart }, dispatch] = useStateValue();
+	const addToCart = () => {
+		// sending the item to the State Provider (CONTEXT API)
+		dispatch({
+			type: "ADD_TO_CART",
+			item: {
+				title: title,
+				image: image,
+				price: price,
+				rating: rating
+			}
+		});
+	};
+
 	return (
 		<React.Fragment>
 			<div>
@@ -23,7 +38,7 @@ function MarketProducts({ title, image, price, rating }) {
 								))}
 						</div>
 					</div>
-					<button>Add To Cart</button>
+					<button onClick={addToCart}>Add to Cart</button>
 				</div>
 			</div>
 		</React.Fragment>

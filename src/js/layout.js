@@ -16,6 +16,8 @@ import injectContext from "./store/appContext";
 
 import { Header } from "./component/header";
 import { Footer } from "./component/footer";
+import { StateProvider } from "./store/stateProvider";
+import reducer, { initialState } from "./store/reducer";
 
 //create your first component
 const Layout = () => {
@@ -28,54 +30,56 @@ const Layout = () => {
 	};
 	return (
 		<div className="d-flex flex-column">
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Switch>
-						<Route exact path="/register">
-							<Header />
-							<Register />
-						</Route>
-						<Route exact path="/login">
-							<Header />
-							<Login />
-						</Route>
-						<Route exact path="/recover">
-							<Recover />
-						</Route>
-						<Route exact path="/ingredient-selection">
-							<Header />
-							<IngredientSelection />
-							<Footer />
-						</Route>
-						<Route exact path="/recipe">
-							<Header />
-							<Recipe />
-							<Footer />
-						</Route>
-						<Route exact path="/recipes">
-							<Header />
-							<Recipes />
-							<Footer />
-						</Route>
-						<Route exact path="/market">
-							<Header />
-							<Market />
-						</Route>
-						<Route exact path="/cart">
-							<Header />
-							<Checkout />
-						</Route>
-						<Route exact path="/">
-							<Header />
-							<Home />
-							<Footer />
-						</Route>
-						<Route>
-							<h1>Not Found</h1>
-						</Route>
-					</Switch>
-				</ScrollToTop>
-			</BrowserRouter>
+			<StateProvider initialState={initialState} reducer={reducer}>
+				<BrowserRouter basename={basename}>
+					<ScrollToTop>
+						<Switch>
+							<Route exact path="/register">
+								<Header />
+								<Register />
+							</Route>
+							<Route exact path="/login">
+								<Header />
+								<Login />
+							</Route>
+							<Route exact path="/recover">
+								<Recover />
+							</Route>
+							<Route exact path="/ingredient-selection">
+								<Header />
+								<IngredientSelection />
+								<Footer />
+							</Route>
+							<Route exact path="/recipe">
+								<Header />
+								<Recipe />
+								<Footer />
+							</Route>
+							<Route exact path="/recipes">
+								<Header />
+								<Recipes />
+								<Footer />
+							</Route>
+							<Route exact path="/market">
+								<Header />
+								<Market />
+							</Route>
+							<Route exact path="/cart">
+								<Header />
+								<Checkout />
+							</Route>
+							<Route exact path="/">
+								<Header />
+								<Home />
+								<Footer />
+							</Route>
+							<Route>
+								<h1>Not Found</h1>
+							</Route>
+						</Switch>
+					</ScrollToTop>
+				</BrowserRouter>
+			</StateProvider>
 		</div>
 	);
 };
