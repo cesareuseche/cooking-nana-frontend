@@ -31,18 +31,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			check: async () => {
 				let url = BASE_URL + "/check";
 				let customHeader = new Headers({
-					Authorization: "Bearer " + localStorage.getItem("token")
+					Authorization: "Bearer " + sessionStorage.getItem("token")
 				});
 				let response = await fetch(url, {
 					method: "GET",
 					headers: customHeader
 				});
 				if (response.ok) {
-					console.log(localStorage.getItem("name") + " esta logueado");
+					console.log(sessionStorage.getItem("name") + " esta logueado");
 					return true;
 				} else {
-					localStorage.token = "";
-					localStorage.name = "";
+					sessionStorage.token = "";
+					sessionStorage.name = "";
 					return false;
 				}
 			},
@@ -53,8 +53,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
-				localStorage.setItem("token", "");
-				localStorage.setItem("name", "");
+				sessionStorage.setItem("token", "");
+				sessionStorage.setItem("name", "");
 
 				for (var i = 0; i < user.length; i++) {
 					if (atCounter) {
@@ -85,11 +85,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let information = await response.json();
 
 				if (response.ok) {
-					localStorage.token = information.jwt;
-					localStorage.name = information.name;
+					sessionStorage.token = information.jwt;
+					sessionStorage.name = information.name;
 					console.log("login aprobado");
 					let response2 = actions.check();
 					if (response2) {
+						sessionStorage.logueado = true;
 						console.log("check aprobado");
 						return true;
 					} else {
@@ -102,24 +103,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			recipes: async () => {
-				let url = BASE_URL + "/recipes";
-				let store = getStore();
-				let response = await fetch(url, {
-					method: "GET"
-				});
-				let information = await response.json();
-				if (response.ok) {
-					setStore({ recipes: information });
-					console.log(store.recipes);
-					return true;
-				} else {
-					return false;
-				}
-			},
+			// recipes: async () => {
+			// 	let url = BASE_URL + "/recipes";
+			// 	let store = getStore();
+			// 	let response = await fetch(url, {
+			// 		method: "GET"
+			// 	});
+			// 	let information = await response.json();
+			// 	if (response.ok) {
+			// 		setStore({ recipes: information });
+			// 		console.log(store.recipes);
+			// 		return true;
+			// 	} else {
+			// 		return false;
+			// 	}
+			// },
 
-			saveSelectedIngredients: selectedIngredientes => {
-				setStore({ selectedIngredientes: selectedIngredientes });
+			logueando: () => {
+				sessionStorage.setItem("logueado", false);
 			}
 		}
 	};
