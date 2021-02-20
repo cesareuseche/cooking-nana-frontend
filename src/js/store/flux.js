@@ -2,7 +2,11 @@ const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {},
+		store: {
+			user: {},
+			recipes: [],
+			selectedIngredients: []
+		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -116,6 +120,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					return false;
 				}
+			},
+
+			saveSelectedIngredients: selectedIngredientes => {
+				setStore({ selectedIngredientes: selectedIngredientes });
 			}
 		}
 	};

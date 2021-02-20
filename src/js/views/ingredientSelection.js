@@ -1,33 +1,65 @@
-import React from "react";
+import React, { useContext, useState, Component } from "react";
+import { useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/IngredientSelection.css";
 import protein from "../../img/protein.png";
 import veggie from "../../img/veggie.png";
-import carbs from "../../img/carbs.png";
+import carb from "../../img/carbs.png";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+//import { ConcatenationScope } from "webpack";
 
 function IngredientSelection() {
+	const { store, actions } = useContext(Context);
+	const [proteins, setProteins] = useState([]);
+	const [carbs, setCarbs] = useState([]);
+	const [veggies, setVeggies] = useState([]);
+	//const [selectedIngredients, setSelectedIngredients] = useState([]);
+	let x = [];
+	let handleChangeP = proteins => {
+		setProteins({ proteins });
+	};
+	let handleChangeC = carbs => {
+		setCarbs({ carbs });
+	};
+	let handleChangeV = veggies => {
+		setVeggies({ veggies });
+	};
+
+	function send() {
+		x = x.concat(proteins, carbs, veggies);
+		for (let i = 0; i < x.length; i++) {
+			{
+				console.log(x[i]);
+			}
+		}
+		actions.saveSelectedIngredients(x);
+		//history.pushState("/recipes");
+	}
+
+	const get = e => {};
+
 	const selectProteins = [
-		{ label: "🥩Beef", value: "1" },
-		{ label: "🍗Chicken", value: "2" },
-		{ label: "🐠Fish", value: "3" },
-		{ label: "🍖Lamb", value: "4" },
-		{ label: "🥓Pork", value: "5" }
+		{ label: "🥩Beef", value: "beef" },
+		{ label: "🍗Chicken", value: "chicken" },
+		{ label: "🐠Fish", value: "fish" },
+		{ label: "🍖Lamb", value: "lamb" },
+		{ label: "🥓Pork", value: "Pork" }
 	];
 
 	const selectCarbs = [
-		{ label: "🍝Pasta", value: "1" },
-		{ label: "🍚Rice", value: "2" },
-		{ label: "🥔Potato", value: "3" },
-		{ label: "🍞Bread", value: "4" }
+		{ label: "🍝Pasta", value: "pasta" },
+		{ label: "🍚Rice", value: "rice" },
+		{ label: "🥔Potato", value: "potato" },
+		{ label: "🍞Bread", value: "bread" }
 	];
 
 	const selectVegetables = [
-		{ label: "🥕Carrot", value: "1" },
-		{ label: "🍅Tomato", value: "2" },
-		{ label: "🧅Onion", value: "3" },
-		{ label: "🫑Peppers", value: "4" },
-		{ label: "🥦Brocoli", value: "5" }
+		{ label: "🥕Carrot", value: "carrot" },
+		{ label: "🍅Tomato", value: "tomato" },
+		{ label: "🧅Onion", value: "onion" },
+		{ label: "🫑Peppers", value: "peppers" },
+		{ label: "🥦Brocoli", value: "brocoli" }
 	];
 
 	return (
@@ -47,27 +79,33 @@ function IngredientSelection() {
 								placeholder="Protein..."
 								isMulti
 								options={selectProteins}
+								onChange={handleChangeP}
 							/>
 						</div>
 						<div className="col-md-4 ingredients-icons">
-							<img src={carbs} alt="protein" />
-							<Select placeholder="Carbs..." isMulti options={selectCarbs} captureMenuScroll={false} />
+							<img src={carb} alt="carbs" />
+							<Select
+								placeholder="Carbs..."
+								isMulti
+								options={selectCarbs}
+								captureMenuScroll={false}
+								onChange={handleChangeC}
+							/>
 						</div>
 						<div className="col-md-4 ingredients-icons">
-							<img src={veggie} alt="protein" />
+							<img src={veggie} alt="veggie" />
 							<Select
 								placeholder="Veggies..."
 								isMulti
 								options={selectVegetables}
 								captureMenuScroll={false}
+								onChange={handleChangeV}
 							/>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-md-12 button-alignment button-style">
-							<Link to="/recipes">
-								<button>Search your Recipe</button>
-							</Link>
+							<button onClick={send}>Search your Recipe</button>
 						</div>
 					</div>
 				</div>
