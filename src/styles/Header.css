@@ -22,6 +22,14 @@
   font-family: 'Hammersmith One', sans-serif;
 }
 
+.margin-hello span{
+  margin-right: 3px;
+}
+
+.signIn-color span{
+  font-weight: 600;
+}
+
 .sticky {
   position: fixed;
   z-index: 99;

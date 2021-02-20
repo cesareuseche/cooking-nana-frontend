@@ -65,7 +65,9 @@ export const Header = () => {
 											<Link
 												className="page-scroll"
 												to={!sessionStorage.getItem("logueado") && "/login"}>
-												{!sessionStorage.getItem("logueado") ? "SignIn" : "SignOut"}
+												<span>
+													{!sessionStorage.getItem("logueado") ? "SignIn" : "SignOut"}
+												</span>
 											</Link>
 										</li>
 										<li className="nav-item">
@@ -84,11 +86,15 @@ export const Header = () => {
 												<span>{cart.length}</span>
 											</Link>
 										</li>
-										<li className="nav-item">
-											<Link className="">
-												{!sessionStorage.getItem("logueado")
-													? "Guest"
-													: sessionStorage.getItem("name")}
+										<li className="nav-item signIn-color">
+											<Link className="margin-hello">
+												{" "}
+												<span>Hello,</span>
+												<span>
+													{!sessionStorage.getItem("logueado")
+														? "Guest"
+														: sessionStorage.getItem("name")}
+												</span>
 											</Link>
 										</li>
 									</ul>
