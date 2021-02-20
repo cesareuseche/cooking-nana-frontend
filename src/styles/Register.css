@@ -1,11 +1,16 @@
 .register {
     height: 100vh;
-    background: url("../img/backgroundyellow.jpg");
-    background-position: 100%;
     display: grid;
     place-items: center;
     font-family: 'Hammersmith One', sans-serif;
 }
+
+.register-background{
+    background: url("../img/backgroundyellow.jpg");
+    background-size: cover ;
+    background-position: 100%;
+}
+
 .register__container > img {
     object-fit: contain;
     height: 80px;

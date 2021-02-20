@@ -40,26 +40,26 @@ function IngredientSelection() {
 	const get = e => {};
 
 	const selectProteins = [
-		{ label: "🥩Beef", value: "beef" },
-		{ label: "🍗Chicken", value: "chicken" },
-		{ label: "🐠Fish", value: "fish" },
-		{ label: "🍖Lamb", value: "lamb" },
-		{ label: "🥓Pork", value: "Pork" }
+		{ label: "🥩 Beef", value: "beef" },
+		{ label: "🍗 Chicken", value: "chicken" },
+		{ label: "🐠 Fish", value: "fish" },
+		{ label: "🍖 Lamb", value: "lamb" },
+		{ label: "🥓 Pork", value: "Pork" }
 	];
 
 	const selectCarbs = [
-		{ label: "🍝Pasta", value: "pasta" },
-		{ label: "🍚Rice", value: "rice" },
-		{ label: "🥔Potato", value: "potato" },
-		{ label: "🍞Bread", value: "bread" }
+		{ label: "🍝 Pasta", value: "pasta" },
+		{ label: "🍚 Rice", value: "rice" },
+		{ label: "🥔 Potato", value: "potato" },
+		{ label: "🍞 Bread", value: "bread" }
 	];
 
 	const selectVegetables = [
-		{ label: "🥕Carrot", value: "carrot" },
-		{ label: "🍅Tomato", value: "tomato" },
-		{ label: "🧅Onion", value: "onion" },
-		{ label: "🫑Peppers", value: "peppers" },
-		{ label: "🥦Brocoli", value: "brocoli" }
+		{ label: "🥕 Carrot", value: "carrot" },
+		{ label: "🍅 Tomato", value: "tomato" },
+		{ label: "🧅 Onion", value: "onion" },
+		{ label: "🫑 Peppers", value: "peppers" },
+		{ label: "🥦 Brocoli", value: "brocoli" }
 	];
 
 	return (

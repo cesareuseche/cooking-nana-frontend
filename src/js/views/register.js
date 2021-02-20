@@ -25,7 +25,7 @@ function Register() {
 	};
 
 	return (
-		<div className="register">
+		<div className="register register-background">
 			<div className="register__container">
 				<img src={logo} alt="" />
 				<h1>Welcome to Cooking Nana</h1>
