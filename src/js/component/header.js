@@ -5,26 +5,23 @@ import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
 import { useStateValue } from "../store/stateProvider";
+import { auth, provider } from "../store/firebase";
+import firebase from "firebase";
 
 export const Header = () => {
 	const [{ cart }, dispatch] = useStateValue();
-	// const logueado = false;
-	// const { store, actions } = useContext(Context);
 
-	// const checking = async () => {
-	// 	const succes = await actions.check();
-	// 	if (succes) {
-	// 		logueado = true;
-	// 		console.log(`el login esta en ${logueado}`);
-	// 		console.log(`${localStorage.getItem("name")} estas logueado`);
-	// 	} else {
-	// 		console.log(`el login esta en ${logueado}`);
-	// 	}
-	// };
+	//LOG OUT NOT WORKING
 
-	// useEffect(() => {
-	// 	checking();
-	// }, []);
+	const logOut = () => {
+		auth.signOut(provider)
+			.then(result => {
+				console.log("logged out", result);
+			})
+			.catch(error => {
+				console.log(error.message);
+			});
+	};
 
 	return (
 		<div className="header_area">
@@ -61,7 +58,7 @@ export const Header = () => {
 												How it works
 											</Link>
 										</li>
-										<li className="nav-item">
+										<li className="nav-item" onClick={logOut}>
 											<Link
 												className="page-scroll"
 												to={!sessionStorage.getItem("logueado") && "/login"}>
