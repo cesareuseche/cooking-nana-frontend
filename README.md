@@ -119,7 +119,7 @@ Note: You will need to [configure github pages for the branch gh-pages](https://
 	$ npm install react-select
 	```	
 
-### React-Select
+### Material-UI/core
 	```sh
 	$ npm install @material-ui/core
 	```	
