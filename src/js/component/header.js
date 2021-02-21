@@ -66,7 +66,7 @@ export const Header = () => {
 												className="page-scroll"
 												to={!sessionStorage.getItem("logueado") && "/login"}>
 												<span>
-													{!sessionStorage.getItem("logueado") ? "SignIn" : "SignOut"}
+													{!sessionStorage.getItem("logueado") ? "Sign in" : "Sign out"}
 												</span>
 											</Link>
 										</li>
