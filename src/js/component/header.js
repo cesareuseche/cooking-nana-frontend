@@ -1,22 +1,22 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
 import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
-import firebase from "firebase";
 
 export const Header = () => {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{ cart, user }, dispatch] = useStateValue();
 
 	//LOG OUT NOT WORKING
 
 	const logOut = () => {
 		auth.signOut(provider)
-			.then(result => {
-				console.log("logged out", result);
+			.then(user => {
+				console.log("logged out", user);
 			})
 			.catch(error => {
 				console.log(error.message);
@@ -26,7 +26,7 @@ export const Header = () => {
 	return (
 		<div className="header_area">
 			<div className="header_navbar">
-				<div className="container">
+				<div className="container-fluid">
 					<div className="row">
 						<div className="col-lg-12">
 							<nav className="navbar navbar-expand-lg">
@@ -46,8 +46,10 @@ export const Header = () => {
 									<span className="toggler-icon" />
 								</button>
 
-								<div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-									<ul id="nav" className="navbar-nav ml-auto">
+								<div
+									className="collapse navbar-collapse sub-menu-bar navbar-alignment-new"
+									id="navbarSupportedContent">
+									<ul id="nav" className="navbar-nav navbar-aligment-new">
 										<li className="nav-item active">
 											<Link className="page-scroll" to="/">
 												Home
@@ -83,8 +85,8 @@ export const Header = () => {
 												<span>{cart.length}</span>
 											</Link>
 										</li>
-										<li className="nav-item signIn-color">
-											<Link className="margin-hello">
+										<li className="signIn-color">
+											<Link className="username-header">
 												{" "}
 												<span>Hello,</span>
 												<span>
@@ -92,6 +94,7 @@ export const Header = () => {
 														? "Guest"
 														: sessionStorage.getItem("name")}
 												</span>
+												<Avatar src={sessionStorage.getItem("picture")} />
 											</Link>
 										</li>
 									</ul>
