@@ -6,6 +6,7 @@ export const initialState = {
 export const actionTypes = {
 	SET_USER: "SET_USER"
 };
+
 // Selector inside of the reducer
 export const getCartTotal = cart => cart.reduce((amount, item) => item.price + amount, 0);
 
