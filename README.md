@@ -119,6 +119,11 @@ Note: You will need to [configure github pages for the branch gh-pages](https://
 	$ npm install react-select
 	```	
 
+### React-Select
+	```sh
+	$ npm install @material-ui/core
+	```	
+
 ## About CORS
 
 This front-end use JASON Web Tokens (jwt), and it comes configured to cache the token, so it can cause communication problems with the back-end in some browsers. For this it is recommended to change the address of the localhost server (located in package.json) so that it is not implicitly `locahost:3000`, and instead make this change:
