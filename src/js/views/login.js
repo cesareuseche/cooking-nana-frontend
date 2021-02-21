@@ -4,9 +4,12 @@ import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
+import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
+import { actionTypes } from "../store/reducer";
 
 function Login() {
+	const [state, dispatch] = useStateValue();
 	const { store, actions } = useContext(Context);
 	const history = useHistory("");
 	const [user, setUser] = useState("");
@@ -29,7 +32,12 @@ function Login() {
 					sessionStorage.logueado = true;
 					sessionStorage.setItem("token", result.credential.accessToken);
 					sessionStorage.setItem("name", result.additionalUserInfo.profile.given_name);
+					sessionStorage.setItem("picture", result.additionalUserInfo.profile.picture);
 					console.log(result);
+					dispatch({
+						type: actionTypes.SET_USER,
+						user: result.user
+					});
 					history.push("/");
 				}
 			})
