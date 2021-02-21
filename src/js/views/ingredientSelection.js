@@ -8,37 +8,33 @@ import carb from "../../img/carbs.png";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 //import { ConcatenationScope } from "webpack";
-
+//1 se guarda una lista []
+//2 se guarda una lista dentro de la lista [[]]
+//dentro de la lista de lista se guarda un diccionario [[{}, {}],[{}, {}],[{}]]
 function IngredientSelection() {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [proteins, setProteins] = useState([]);
 	const [carbs, setCarbs] = useState([]);
 	const [veggies, setVeggies] = useState([]);
-	//const [selectedIngredients, setSelectedIngredients] = useState([]);
+
 	let x = [];
-	let handleChangeP = proteins => {
-		setProteins({ proteins });
+	let handleChangeP = e => {
+		setProteins(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
-	let handleChangeC = carbs => {
-		setCarbs({ carbs });
+	let handleChangeC = e => {
+		setCarbs(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
-	let handleChangeV = veggies => {
-		setVeggies({ veggies });
+
+	let handleChangeV = e => {
+		setVeggies(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
 
 	function send() {
 		x = x.concat(proteins, carbs, veggies);
-		for (let i = 0; i < x.length; i++) {
-			{
-				console.log(x[i]);
-			}
-		}
-		// actions.saveSelectedIngredients(x);
+		console.log(x);
 		history.push("/recipes");
 	}
-
-	const get = e => {};
 
 	const selectProteins = [
 		{ label: "🥩 Beef", value: "beef" },

@@ -35,11 +35,9 @@ const Layout = () => {
 					<ScrollToTop>
 						<Switch>
 							<Route exact path="/register">
-								<Header />
 								<Register />
 							</Route>
 							<Route exact path="/login">
-								<Header />
 								<Login />
 							</Route>
 							<Route exact path="/recover">
