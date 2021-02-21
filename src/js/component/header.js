@@ -1,35 +1,32 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
 import { useStateValue } from "../store/stateProvider";
+import { auth, provider } from "../store/firebase";
 
 export const Header = () => {
-	const [{ cart }, dispatch] = useStateValue();
-	// const logueado = false;
-	// const { store, actions } = useContext(Context);
+	const [{ cart, user }, dispatch] = useStateValue();
 
-	// const checking = async () => {
-	// 	const succes = await actions.check();
-	// 	if (succes) {
-	// 		logueado = true;
-	// 		console.log(`el login esta en ${logueado}`);
-	// 		console.log(`${localStorage.getItem("name")} estas logueado`);
-	// 	} else {
-	// 		console.log(`el login esta en ${logueado}`);
-	// 	}
-	// };
+	//LOG OUT NOT WORKING
 
-	// useEffect(() => {
-	// 	checking();
-	// }, []);
+	const logOut = () => {
+		auth.signOut(provider)
+			.then(user => {
+				console.log("logged out", user);
+			})
+			.catch(error => {
+				console.log(error.message);
+			});
+	};
 
 	return (
 		<div className="header_area">
 			<div className="header_navbar">
-				<div className="container">
+				<div className="container-fluid">
 					<div className="row">
 						<div className="col-lg-12">
 							<nav className="navbar navbar-expand-lg">
@@ -49,8 +46,10 @@ export const Header = () => {
 									<span className="toggler-icon" />
 								</button>
 
-								<div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-									<ul id="nav" className="navbar-nav ml-auto">
+								<div
+									className="collapse navbar-collapse sub-menu-bar navbar-alignment-new"
+									id="navbarSupportedContent">
+									<ul id="nav" className="navbar-nav navbar-aligment-new">
 										<li className="nav-item active">
 											<Link className="page-scroll" to="/">
 												Home
@@ -61,12 +60,12 @@ export const Header = () => {
 												How it works
 											</Link>
 										</li>
-										<li className="nav-item">
+										<li className="nav-item" onClick={logOut}>
 											<Link
 												className="page-scroll"
 												to={!sessionStorage.getItem("logueado") && "/login"}>
 												<span>
-													{!sessionStorage.getItem("logueado") ? "SignIn" : "SignOut"}
+													{!sessionStorage.getItem("logueado") ? "Sign in" : "Sign out"}
 												</span>
 											</Link>
 										</li>
@@ -86,8 +85,8 @@ export const Header = () => {
 												<span>{cart.length}</span>
 											</Link>
 										</li>
-										<li className="nav-item signIn-color">
-											<Link className="margin-hello">
+										<li className="signIn-color">
+											<Link className="username-header">
 												{" "}
 												<span>Hello,</span>
 												<span>
@@ -95,6 +94,7 @@ export const Header = () => {
 														? "Guest"
 														: sessionStorage.getItem("name")}
 												</span>
+												<Avatar src={sessionStorage.getItem("picture")} />
 											</Link>
 										</li>
 									</ul>

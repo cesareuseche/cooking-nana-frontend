@@ -12,7 +12,7 @@ function Checkout() {
 				<div className="checkout__left">
 					<img className="checkout__ad" src={checkoutBanner} alt="" />
 					<div>
-						<h3> Hello,</h3>
+						<h3> Hello, {sessionStorage.getItem("name")}</h3>
 						{/* <h2 className="checkout__title">
 							Your Cooking Nana's Cart <img className="logo" src={logo} alt="logo-nana" />
 						</h2> */}
