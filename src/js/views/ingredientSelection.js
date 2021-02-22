@@ -38,8 +38,6 @@ function IngredientSelection() {
 		const succes = await actions.match(y);
 		if (succes) {
 			history.push("/recipes");
-		} else {
-			console.log("no mande la lista de ingredientes ingredientSelection.js");
 		}
 	};
 

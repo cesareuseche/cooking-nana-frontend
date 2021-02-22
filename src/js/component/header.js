@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../../styles/Header.css";
@@ -10,17 +10,23 @@ import { auth, provider } from "../store/firebase";
 
 export const Header = () => {
 	const [{ cart, user }, dispatch] = useStateValue();
+	const history = useHistory("");
 
 	//LOG OUT NOT WORKING
 
 	const logOut = () => {
-		auth.signOut(provider)
-			.then(user => {
-				console.log("logged out", user);
-			})
-			.catch(error => {
-				console.log(error.message);
-			});
+		sessionStorage.logueado = false;
+		sessionStorage.name = "";
+		sessionStorage.token = "";
+		sessionStorage.picture = "";
+		history.push("/login");
+		// auth.signOut(provider)
+		// 	.then(user => {
+		// 		console.log("logged out", user);
+		// 	})
+		// 	.catch(error => {
+		// 		console.log(error.message);
+		// 	});
 	};
 
 	return (
@@ -60,7 +66,16 @@ export const Header = () => {
 												How it works
 											</Link>
 										</li>
-										<li className="nav-item" onClick={logOut}>
+										{sessionStorage.logueado ? (
+											<li className="nav-item page-scroll" onClick={logOut}>
+												<Link>Sign out</Link>
+											</li>
+										) : (
+											<li className="nav-item page-scroll">
+												<Link to="/login">Login</Link>
+											</li>
+										)}
+										{/* <li className="nav-item" onClick={logOut}>
 											<Link
 												className="page-scroll"
 												to={!sessionStorage.getItem("logueado") && "/login"}>
@@ -68,7 +83,7 @@ export const Header = () => {
 													{!sessionStorage.getItem("logueado") ? "Sign in" : "Sign out"}
 												</span>
 											</Link>
-										</li>
+										</li> */}
 										<li className="nav-item">
 											<Link className="page-scroll" to="/register">
 												Create Account
@@ -90,7 +105,7 @@ export const Header = () => {
 												{" "}
 												<span>Hello,</span>
 												<span>
-													{!sessionStorage.getItem("logueado")
+													{!sessionStorage.logueado
 														? "Guest"
 														: sessionStorage.getItem("name")}
 												</span>
