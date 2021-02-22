@@ -19,6 +19,7 @@ function IngredientSelection() {
 	const [veggies, setVeggies] = useState([]);
 
 	let x = [];
+	let y = {};
 	let handleChangeP = e => {
 		setProteins(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
@@ -30,11 +31,15 @@ function IngredientSelection() {
 		setVeggies(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
 
-	function send() {
+	const send = async e => {
 		x = x.concat(proteins, carbs, veggies);
-		console.log(x);
-		history.push("/recipes");
-	}
+		y = { search: x };
+		console.log("desde el js" + y);
+		const succes = await actions.match(y);
+		if (succes) {
+			history.push("/recipes");
+		}
+	};
 
 	const selectProteins = [
 		{ label: "🥩 Beef", value: "beef" },

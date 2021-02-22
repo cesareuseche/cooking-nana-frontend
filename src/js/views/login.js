@@ -19,10 +19,7 @@ function Login() {
 		e.preventDefault();
 		const succes = await actions.login(user, password);
 		if (succes) {
-			console.log("usuario logueado login.js");
 			history.push("/");
-		} else {
-			console.log("usuario no logueado login.js");
 		}
 	};
 

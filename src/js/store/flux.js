@@ -1,8 +1,8 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://127.0.0.1:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {},
+		store: { match: [] },
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -50,11 +50,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (user, password) => {
 				let url = BASE_URL + "/login";
 				let actions = getActions();
-				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
-				sessionStorage.setItem("token", "");
-				sessionStorage.setItem("name", "");
 
 				for (var i = 0; i < user.length; i++) {
 					if (atCounter) {
@@ -76,7 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: password
 					};
 				}
-
+				console.log("vamos a llamar a login");
 				let response = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -85,20 +82,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let information = await response.json();
 
 				if (response.ok) {
-					sessionStorage.token = information.jwt;
-					sessionStorage.name = information.name;
-					console.log("login aprobado");
+					console.log("hice loguin, viene check");
 					let response2 = actions.check();
 					if (response2) {
+						sessionStorage.setItem("token", information.jwt);
+						sessionStorage.setItem("name", information.name);
 						sessionStorage.logueado = true;
-						console.log("check aprobado");
 						return true;
 					} else {
-						console.log("check reprobado");
 						return false;
 					}
 				} else {
-					console.log("login reprobado");
 					return false;
 				}
 			},
@@ -121,6 +115,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logueando: () => {
 				sessionStorage.setItem("logueado", false);
+			},
+
+			match: async ingredients => {
+				console.log("Los ingredientes en el flux son: " + JSON.stringify(ingredients));
+				let url = BASE_URL + "/search";
+
+				let response = await fetch(url, {
+					method: "POST",
+					// headers: [
+					// 	["Content-Type", "application/x-www-form-urlencoded"],
+					// 	["Content-Type", "multipart/form-data"],
+					// 	["Content-Type", "text/plain"],
+					// 	["Content-Type", "application/json"]
+					// ],
+					body: JSON.stringify(ingredients)
+				});
+
+				let information = await response.json();
+				console.log("El back me mando: " + information);
+				if (response.ok) {
+					setStore({ match: information });
+					return true;
+				} else {
+					console.log(response.status);
+					return false;
+				}
 			}
 		}
 	};
