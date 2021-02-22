@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {},
+		store: { match: [] },
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -121,6 +121,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logueando: () => {
 				sessionStorage.setItem("logueado", false);
+			},
+
+			match: async ingredients => {
+				console.log("Los ingredientes en el flux son: " + JSON.stringify(ingredients));
+				let url = BASE_URL + "/search";
+
+				let response = await fetch(url, {
+					method: "POST",
+					headers: [
+						["Content-Type", "application/x-www-form-urlencoded"],
+						["Content-Type", "multipart/form-data"],
+						["Content-Type", "text/plain"],
+						["Content-Type", "application/json"]
+					],
+					body: { search: "['onion']" }
+				});
+
+				let information = await response.json();
+				if (response.ok) {
+					setStore({ match: information });
+					return true;
+				} else {
+					console.log(response.status);
+					return false;
+				}
 			}
 		}
 	};

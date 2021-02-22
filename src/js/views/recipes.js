@@ -32,6 +32,11 @@ function Recipes() {
 	// 	}
 	// });
 
+	// fetch = [1,2,3,4]
+	// for()
+	// fetch = receta[1]
+	// recetas[]
+
 	return (
 		<React.Fragment>
 			<div className="container-fluid presentation-width recipe-result">
