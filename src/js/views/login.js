@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
+import googleIcon from "../../img/googleIcon.svg";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
@@ -68,9 +69,8 @@ function Login() {
 						{" "}
 						Sign In
 					</button>
-					<button className="cta-select" onClick={signInWithGoogle}>
-						{" "}
-						Sign In with Google
+					<button className="cta-select-google" onClick={signInWithGoogle}>
+						<i className="fab fa-google" /> Sign In with Google
 					</button>
 					<Link to="/register">
 						<button className="cta-select"> Create an Account</button>
