@@ -4,13 +4,14 @@ import wine1 from "../../img/wine1.jpg";
 import PropTypes from "prop-types";
 import { useStateValue } from "../store/stateProvider";
 
-function MarketProducts({ title, image, price, rating }) {
+function MarketProducts({ id, title, image, price, rating }) {
 	const [{ cart }, dispatch] = useStateValue();
 	const addToCart = () => {
 		// sending the item to the State Provider (CONTEXT API)
 		dispatch({
 			type: "ADD_TO_CART",
 			item: {
+				id: id,
 				title: title,
 				image: image,
 				price: price,
@@ -46,6 +47,7 @@ function MarketProducts({ title, image, price, rating }) {
 }
 
 MarketProducts.propTypes = {
+	id: PropTypes.number,
 	title: PropTypes.string,
 	image: PropTypes.img,
 	price: PropTypes.string,

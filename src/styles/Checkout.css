@@ -11,8 +11,10 @@
 }
 
 .checkout__title{
+    display: flex;
+    align-items: center;
     margin-right: 10px;
-    padding: 10px;
+    padding: 10px 0px;
     border-bottom: 1px solid #F8F8F8;
 }
 
@@ -20,5 +22,21 @@
     padding-top: 12px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.logo{
+    width: 3%;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 800px){
+    .logo{
+        width: 0%;
+    }
+}
+
+.checkout__box{
+    display: flex;
     justify-content: center;
 }
