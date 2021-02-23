@@ -1,6 +1,6 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { Avatar } from "@material-ui/core";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
@@ -9,17 +9,39 @@ import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
 
 export const Header = () => {
+	const { store, actions } = useContext(Context);
 	const [{ cart, user }, dispatch] = useStateValue();
 	const history = useHistory("");
 
-	//LOG OUT NOT WORKING
+	// useEffect(() => {
+	// 	auth.onAuthStateChanged(authUser => {
+	// 		console.log("THE USER IS >>>", authUser);
+	// 		if (authUser) {
+	// 			//the user just logged in / the user was logged in
+	// 			dispatch({
+	// 				type: "SET_USER",
+	// 				user: authUser
+	// 			});
+	// 		} else {
+	// 			// the user logged out of the account
+	// 			dispatch({
+	// 				type: "SET_USER",
+	// 				user: null
+	// 			});
+	// 		}
+	// 	});
+	// }, []);
 
 	const logOut = () => {
-		sessionStorage.logueado = false;
-		sessionStorage.name = "";
 		sessionStorage.token = "";
+		sessionStorage.id = "";
+		sessionStorage.name = "";
+		sessionStorage.logOutConfirmation = false;
 		sessionStorage.picture = "";
-		history.push("/login");
+		store.user = {};
+		store.token = "";
+		store.logOutConfirmation = false;
+		console.log(store.logOutConfirmation);
 		// auth.signOut(provider)
 		// 	.then(user => {
 		// 		console.log("logged out", user);
@@ -66,13 +88,13 @@ export const Header = () => {
 												How it works
 											</Link>
 										</li>
-										{sessionStorage.logueado ? (
+										{store.logOutConfirmation ? (
 											<li className="nav-item page-scroll" onClick={logOut}>
 												<Link>Sign out</Link>
 											</li>
 										) : (
 											<li className="nav-item page-scroll">
-												<Link to="/login">Login</Link>
+												<Link to="/login">Sign in</Link>
 											</li>
 										)}
 										{/* <li className="nav-item" onClick={logOut}>
@@ -105,7 +127,7 @@ export const Header = () => {
 												{" "}
 												<span>Hello,</span>
 												<span>
-													{!sessionStorage.logueado
+													{!store.logOutConfirmation
 														? "Guest"
 														: sessionStorage.getItem("name")}
 												</span>

@@ -2,7 +2,12 @@ const BASE_URL = "http://127.0.0.1:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: { match: [] },
+		store: {
+			match: [],
+			user: {},
+			token: "",
+			logOutConfirmation: false
+		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -30,19 +35,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			check: async () => {
 				let url = BASE_URL + "/check";
+				let store = getStore();
 				let customHeader = new Headers({
-					Authorization: "Bearer " + sessionStorage.getItem("token")
+					Authorization: "Bearer " + store.user.jwt
 				});
 				let response = await fetch(url, {
 					method: "GET",
 					headers: customHeader
 				});
 				if (response.ok) {
-					console.log(sessionStorage.getItem("name") + " esta logueado");
 					return true;
 				} else {
-					sessionStorage.token = "";
-					sessionStorage.name = "";
+					setStore({ user: "" });
 					return false;
 				}
 			},
@@ -50,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (user, password) => {
 				let url = BASE_URL + "/login";
 				let actions = getActions();
+				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
 
@@ -82,12 +87,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let information = await response.json();
 
 				if (response.ok) {
-					console.log("hice loguin, viene check");
+					setStore({ user: information, token: information.jwt, logOutConfirmation: true });
+					sessionStorage.setItem("token", store.user.jwt);
+					sessionStorage.setItem("id", store.user.id);
+					sessionStorage.setItem("name", store.user.name);
+					sessionStorage.setItem("logOutConfirmation", true);
+					sessionStorage.setItem("user", information);
+					console.log("el nombre desde el sessionStorage: " + sessionStorage.user.name);
 					let response2 = actions.check();
 					if (response2) {
-						sessionStorage.setItem("token", information.jwt);
-						sessionStorage.setItem("name", information.name);
-						sessionStorage.logueado = true;
 						return true;
 					} else {
 						return false;
@@ -113,22 +121,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	}
 			// },
 
-			logueando: () => {
-				sessionStorage.setItem("logueado", false);
-			},
+			// checking: async () => {
+			// 	let store = getStore();
+			// 	if (store.user == null && store.token == null) {
+			// 		if (sessionStorage.token != null) {
+			// 			let url = BASE_URL + "/user/" + sessionStorage.id;
+			// 			let response = await fetch(url);
+			// 			let information = await response.json();
+			// 			if (response.ok) {
+			// 				setStore({ user: information });
+			// 				setStore({ token: sessionStorage.getItem("token") });
+			// 				sessionStorage.token = sessionStorage.getItem("token");
+			// 			}
+			// 		}
+			// 	}
+			// },
 
 			match: async ingredients => {
 				console.log("Los ingredientes en el flux son: " + JSON.stringify(ingredients));
 				let url = BASE_URL + "/search";
+				let store = getStore();
 
 				let response = await fetch(url, {
 					method: "POST",
-					// headers: [
-					// 	["Content-Type", "application/x-www-form-urlencoded"],
-					// 	["Content-Type", "multipart/form-data"],
-					// 	["Content-Type", "text/plain"],
-					// 	["Content-Type", "application/json"]
-					// ],
+					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(ingredients)
 				});
 
@@ -136,11 +152,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("El back me mando: " + information);
 				if (response.ok) {
 					setStore({ match: information });
+					console.log("en el store hay: " + store.match);
 					return true;
 				} else {
 					console.log(response.status);
 					return false;
 				}
+			},
+
+			init: () => {
+				sessionStorage.setItem("logOutConfirmation", false);
 			}
 		}
 	};

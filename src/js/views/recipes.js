@@ -35,7 +35,7 @@ function Recipes() {
 	// fetch = [1,2,3,4]
 	// for()
 	// fetch = receta[1]
-	// recetas[]
+	// recetas[]s
 
 	return (
 		<React.Fragment>
