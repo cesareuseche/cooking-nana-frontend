@@ -23,3 +23,16 @@
     font-size: 16px;
     font-weight: 800;
 }
+
+.cart__button{
+    background: #FFDA00;
+    border: solid 2px #ffffff;
+    color: black;
+    border-radius: 40px;
+}
+
+.cart__button:hover{
+        border: 2px solid #FFDA00;
+        background: #ffffff;
+        color: black;
+}
