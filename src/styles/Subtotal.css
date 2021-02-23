@@ -11,6 +11,15 @@
     font-family: 'Hammersmith One', sans-serif;
 }
 
+.subtotal p{
+    text-align: center;
+}
+
+.subtotal small{
+    display: flex;
+    justify-content: center;
+}
+
 .subtotal__gift{
     display: flex;
     align-items: center;

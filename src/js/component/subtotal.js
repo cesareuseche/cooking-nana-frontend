@@ -13,10 +13,7 @@ function Subtotal() {
 				renderText={value => (
 					<>
 						<p>
-							Subtotal(
-							{cart.length}
-							):
-							<strong>{value}</strong>
+							Number of Items ({cart.length})<strong> Total {value}</strong>
 						</p>
 						<small className="subtotal__gift">
 							<input type="checkbox" />
@@ -32,7 +29,7 @@ function Subtotal() {
 			/>
 			<div className="button-wrapper">
 				<PayPalScriptProvider options={{ "client-id": "test" }}>
-					<PayPalButtons />
+					<PayPalButtons style={{ shape: "pill" }} />
 				</PayPalScriptProvider>
 			</div>
 		</div>
