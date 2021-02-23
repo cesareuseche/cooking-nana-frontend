@@ -22,11 +22,6 @@ const reducer = (state, action) => {
 				...state,
 				cart: [...state.cart, action.item]
 			};
-		case "EMPTY_CART":
-			return {
-				...state,
-				cart: []
-			};
 		case "REMOVE_FROM_CART": // case to remove items from the cart
 			const index = state.cart.findIndex(cartItem => cartItem.id === action.id);
 			let newCart = [...state.cart];
@@ -38,6 +33,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				cart: newCart
+			};
+		case "EMPTY_CART":
+			return {
+				...state,
+				cart: []
 			};
 		default:
 			return state;
