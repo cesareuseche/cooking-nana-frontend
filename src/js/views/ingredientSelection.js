@@ -31,7 +31,6 @@ function IngredientSelection() {
 	const send = async e => {
 		x = x.concat(proteins, carbs, veggies);
 		y = { search: x };
-		console.log("desde el js" + y);
 		const succes = await actions.match(y);
 		if (succes) {
 			history.push("/recipes");
