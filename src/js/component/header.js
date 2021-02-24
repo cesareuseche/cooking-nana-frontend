@@ -11,6 +11,7 @@ import { auth, provider } from "../store/firebase";
 export const Header = () => {
 	const { store, actions } = useContext(Context);
 	const [{ cart, user }, dispatch] = useStateValue();
+	const [x, setX] = useState(1);
 	const history = useHistory("");
 
 	// useEffect(() => {
@@ -41,15 +42,17 @@ export const Header = () => {
 		store.user = {};
 		store.token = "";
 		store.logOutConfirmation = false;
-		console.log(store.logOutConfirmation);
-		// auth.signOut(provider)
-		// 	.then(user => {
-		// 		console.log("logged out", user);
-		// 	})
-		// 	.catch(error => {
-		// 		console.log(error.message);
-		// 	});
+		setX(x + x);
 	};
+
+	useEffect(() => {
+		console.log("useEffect");
+		if (sessionStorage.getItem("logOutConfirmation")) {
+			store.user = sessionStorage.getItem("user");
+			store.logOutConfirmation = true;
+			store.token = sessionStorage.token;
+		}
+	}, []);
 
 	return (
 		<div className="header_area">

@@ -3,7 +3,8 @@ const BASE_URL = "http://127.0.0.1:8080";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			match: [],
+			match: {},
+			recipes: [],
 			user: {},
 			token: "",
 			logOutConfirmation: false
@@ -78,7 +79,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: password
 					};
 				}
-				console.log("vamos a llamar a login");
 				let response = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -88,12 +88,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				if (response.ok) {
 					setStore({ user: information, token: information.jwt, logOutConfirmation: true });
-					sessionStorage.setItem("token", store.user.jwt);
-					sessionStorage.setItem("id", store.user.id);
-					sessionStorage.setItem("name", store.user.name);
+					sessionStorage.setItem("token", information.jwt);
+					sessionStorage.setItem("id", information.id);
+					sessionStorage.setItem("name", information.name);
 					sessionStorage.setItem("logOutConfirmation", true);
 					sessionStorage.setItem("user", information);
-					console.log("el nombre desde el sessionStorage: " + sessionStorage.user.name);
 					let response2 = actions.check();
 					if (response2) {
 						return true;
@@ -105,21 +104,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// recipes: async () => {
-			// 	let url = BASE_URL + "/recipes";
-			// 	let store = getStore();
-			// 	let response = await fetch(url, {
-			// 		method: "GET"
-			// 	});
-			// 	let information = await response.json();
-			// 	if (response.ok) {
-			// 		setStore({ recipes: information });
-			// 		console.log(store.recipes);
-			// 		return true;
-			// 	} else {
-			// 		return false;
-			// 	}
-			// },
+			recipe: async e => {
+				let store = getStore();
+				for (let i = 0; i < store.match.length; i++) {
+					let url = BASE_URL + "/recipes/" + store.match[i];
+					let response = await fetch(url);
+					let recipe = await response.json();
+					if (recipe != "") {
+						store.recipes.push(recipe);
+					}
+				}
+				console.log(store.recipes);
+				return true;
+			},
 
 			// checking: async () => {
 			// 	let store = getStore();
@@ -138,7 +135,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// },
 
 			match: async ingredients => {
-				console.log("Los ingredientes en el flux son: " + JSON.stringify(ingredients));
 				let url = BASE_URL + "/search";
 				let store = getStore();
 
@@ -149,10 +145,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				let information = await response.json();
-				console.log("El back me mando: " + information);
 				if (response.ok) {
-					setStore({ match: information });
-					console.log("en el store hay: " + store.match);
+					console.log("toda la respuesta es: " + information);
+					console.log("los id son: " + information.no_dupe_id_list);
+					setStore({ match: information.no_dupe_id_list });
 					return true;
 				} else {
 					console.log(response.status);
