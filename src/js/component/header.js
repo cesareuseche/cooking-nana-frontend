@@ -11,48 +11,7 @@ import { auth, provider } from "../store/firebase";
 export const Header = () => {
 	const { store, actions } = useContext(Context);
 	const [{ cart, user }, dispatch] = useStateValue();
-	const [x, setX] = useState(1);
 	const history = useHistory("");
-
-	// useEffect(() => {
-	// 	auth.onAuthStateChanged(authUser => {
-	// 		console.log("THE USER IS >>>", authUser);
-	// 		if (authUser) {
-	// 			//the user just logged in / the user was logged in
-	// 			dispatch({
-	// 				type: "SET_USER",
-	// 				user: authUser
-	// 			});
-	// 		} else {
-	// 			// the user logged out of the account
-	// 			dispatch({
-	// 				type: "SET_USER",
-	// 				user: null
-	// 			});
-	// 		}
-	// 	});
-	// }, []);
-
-	const logOut = () => {
-		sessionStorage.token = "";
-		sessionStorage.id = "";
-		sessionStorage.name = "";
-		sessionStorage.logOutConfirmation = false;
-		sessionStorage.picture = "";
-		store.user = {};
-		store.token = "";
-		store.logOutConfirmation = false;
-		setX(x + x);
-	};
-
-	useEffect(() => {
-		console.log("useEffect");
-		if (sessionStorage.getItem("logOutConfirmation")) {
-			store.user = sessionStorage.getItem("user");
-			store.logOutConfirmation = true;
-			store.token = sessionStorage.token;
-		}
-	}, []);
 
 	return (
 		<div className="header_area">
@@ -92,7 +51,7 @@ export const Header = () => {
 											</Link>
 										</li>
 										{store.logOutConfirmation ? (
-											<li className="nav-item page-scroll" onClick={logOut}>
+											<li className="nav-item page-scroll" onClick={actions.logOut}>
 												<Link>Sign out</Link>
 											</li>
 										) : (
@@ -100,15 +59,6 @@ export const Header = () => {
 												<Link to="/login">Sign in</Link>
 											</li>
 										)}
-										{/* <li className="nav-item" onClick={logOut}>
-											<Link
-												className="page-scroll"
-												to={!sessionStorage.getItem("logueado") && "/login"}>
-												<span>
-													{!sessionStorage.getItem("logueado") ? "Sign in" : "Sign out"}
-												</span>
-											</Link>
-										</li> */}
 										<li className="nav-item">
 											<Link className="page-scroll" to="/register">
 												Create Account
