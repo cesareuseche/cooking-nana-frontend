@@ -12,8 +12,8 @@ function Home() {
 			<div className="presentation">
 				<div className="introduction">
 					<div className="intro-text">
-						<h1>Cook like a chef at home</h1>
-						<h3>the best way to eat delicous meals at home</h3>
+						<h1>Cook like a nana at home</h1>
+						<h3>the best way to eat delicious meals at home</h3>
 					</div>
 					<div className="cta">
 						<Link to="/ingredient-selection">
