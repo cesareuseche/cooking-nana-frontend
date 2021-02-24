@@ -9,7 +9,7 @@ function Recipe() {
 	const params = useParams();
 	useEffect(
 		() => {
-			let selectedRecipe = store.recipes.lenght > 0 ? store.recipes.find(recipes => recipes.id == params.id) : {};
+			let selectedRecipe = store.recipes.length > 0 ? store.recipes.find(recipes => recipes.id == params.id) : {};
 			setRecipe(selectedRecipe);
 		},
 		[store.recipes, params]

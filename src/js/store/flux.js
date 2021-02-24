@@ -104,35 +104,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			init: () => {
+				sessionStorage.setItem("logOutConfirmation", false);
+			},
+
+			logOut: () => {
+				sessionStorage.setItem("token", "");
+				sessionStorage.setItem("id", "");
+				sessionStorage.setItem("name", "");
+				sessionStorage.setItem("logOutConfirmation", "");
+				sessionStorage.setItem("user", {});
+				setStore({ logOutConfirmation: false, user: {}, token: "" });
+			},
+
+			checking: () => {
+				if (sessionStorage.getItem("logOutConfirmation")) {
+					setStore({
+						user: sessionStorage.getItem("user"),
+						logOutConfirmation: true,
+						toke: sessionStorage.token
+					});
+				}
+			},
+
 			recipe: async e => {
 				let store = getStore();
+				let recetas = [];
 				for (let i = 0; i < store.match.length; i++) {
 					let url = BASE_URL + "/recipes/" + store.match[i];
 					let response = await fetch(url);
 					let recipe = await response.json();
 					if (recipe != "") {
-						store.recipes.push(recipe);
+						recetas.push(recipe);
 					}
 				}
-				console.log(store.recipes);
+				setStore({ recipes: recetas });
 				return true;
 			},
-
-			// checking: async () => {
-			// 	let store = getStore();
-			// 	if (store.user == null && store.token == null) {
-			// 		if (sessionStorage.token != null) {
-			// 			let url = BASE_URL + "/user/" + sessionStorage.id;
-			// 			let response = await fetch(url);
-			// 			let information = await response.json();
-			// 			if (response.ok) {
-			// 				setStore({ user: information });
-			// 				setStore({ token: sessionStorage.getItem("token") });
-			// 				sessionStorage.token = sessionStorage.getItem("token");
-			// 			}
-			// 		}
-			// 	}
-			// },
 
 			match: async ingredients => {
 				let url = BASE_URL + "/search";
@@ -154,10 +162,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(response.status);
 					return false;
 				}
-			},
-
-			init: () => {
-				sessionStorage.setItem("logOutConfirmation", false);
 			}
 		}
 	};
