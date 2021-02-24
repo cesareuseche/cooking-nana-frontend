@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import "../../styles/Login.css";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
 import { actionTypes } from "../store/reducer";
+import { setLogOutConfirmation } from "../component/header";
 
 function Login() {
 	const [state, dispatch] = useStateValue();
@@ -19,6 +20,7 @@ function Login() {
 		e.preventDefault();
 		const succes = await actions.login(user, password);
 		if (succes) {
+			store.logOutConfirmation = true;
 			history.push("/");
 		}
 	};
@@ -27,11 +29,17 @@ function Login() {
 		auth.signInWithPopup(provider)
 			.then(result => {
 				if (result) {
-					sessionStorage.logueado = true;
-					sessionStorage.setItem("token", result.credential.accessToken);
-					sessionStorage.setItem("name", result.additionalUserInfo.profile.given_name);
+					store.logOutConfirmation = true;
+					store.token = result.credential.accessToken;
+					let user = {
+						name: result.additionalUserInfo.profile.name,
+						emai: result.additionalUserInfo.profile.email,
+						jwt: result.credential.accessToken
+					};
+					store.user = user;
 					sessionStorage.setItem("picture", result.additionalUserInfo.profile.picture);
-					console.log(result);
+					sessionStorage.setItem("token", result.credential.accessToken);
+					sessionStorage.setItem("name", result.additionalUserInfo.profile.name);
 					dispatch({
 						type: actionTypes.SET_USER,
 						user: result.user
