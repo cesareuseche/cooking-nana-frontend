@@ -30,7 +30,7 @@ function HowTo() {
 								<img className="icon-size-align" src={chefIcon} />
 								<div className="first-step-title" />
 							</div>
-							<h3 className="table-title">Get ready to cook like a Chef</h3>
+							<h3 className="table-title">Get ready to cook like a Nana</h3>
 							<div className="first-step-description">
 								<p>
 									The time has come, start to cook like a chef and surprise your friends and family
