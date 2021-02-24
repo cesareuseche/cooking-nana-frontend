@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/Home.css";
 import RecipesCards from "../component/recipesCards";
 import poke from "../../img/Photo.png";
@@ -7,6 +7,13 @@ import HowTo from "../component/howTo";
 import { Link } from "react-router-dom";
 
 function Home() {
+	useEffect(() => {
+		console.log("Home");
+		// if (sessionStorage.getItem("logOutConfirmation")) {
+		// 	store.user = sessionStorage.getItem("user");
+		// 	store.logOutConfirmation = true;
+		// 	store.token = sessionStorage.token;
+	}, []);
 	return (
 		<React.Fragment>
 			<div className="presentation">

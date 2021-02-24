@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "./store/appContext";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
@@ -28,6 +28,13 @@ const Layout = () => {
 	const checking = () => {
 		actions.check(store.user.jwt);
 	};
+	useEffect(() => {
+		console.log("layout");
+		// if (sessionStorage.getItem("logOutConfirmation")) {
+		// 	store.user = sessionStorage.getItem("user");
+		// 	store.logOutConfirmation = true;
+		// 	store.token = sessionStorage.token;
+	}, []);
 	return (
 		<div className="d-flex flex-column">
 			<StateProvider initialState={initialState} reducer={reducer}>
