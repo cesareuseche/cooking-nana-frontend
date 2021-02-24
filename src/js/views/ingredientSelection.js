@@ -7,7 +7,10 @@ import veggie from "../../img/veggie.png";
 import carb from "../../img/carbs.png";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-
+//import { ConcatenationScope } from "webpack";
+//1 se guarda una lista []
+//2 se guarda una lista dentro de la lista [[]]
+//dentro de la lista de lista se guarda un diccionario [[{}, {}],[{}, {}],[{}]]
 function IngredientSelection() {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
@@ -31,6 +34,7 @@ function IngredientSelection() {
 	const send = async e => {
 		x = x.concat(proteins, carbs, veggies);
 		y = { search: x };
+		console.log("desde el js" + y);
 		const succes = await actions.match(y);
 		if (succes) {
 			history.push("/recipes");
@@ -42,16 +46,14 @@ function IngredientSelection() {
 		{ label: "🍗 Chicken", value: "chicken" },
 		{ label: "🐠 Fish", value: "fish" },
 		{ label: "🍖 Lamb", value: "lamb" },
-		{ label: "🥓 Pork", value: "pork" },
-		{ label: "🍳 Eggs", value: "eggs" }
+		{ label: "🥓 Pork", value: "Pork" }
 	];
 
 	const selectCarbs = [
 		{ label: "🍝 Pasta", value: "pasta" },
 		{ label: "🍚 Rice", value: "rice" },
 		{ label: "🥔 Potato", value: "potato" },
-		{ label: "🍞 Bread", value: "bread" },
-		{ label: "🍥 Flour", value: "flour" }
+		{ label: "🍞 Bread", value: "bread" }
 	];
 
 	const selectVegetables = [

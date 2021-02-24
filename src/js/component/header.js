@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../../styles/Header.css";
 import CookingNana from "../../img/Cooking-nana.png";
@@ -9,50 +9,25 @@ import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
 
 export const Header = () => {
-	const { store, actions } = useContext(Context);
 	const [{ cart, user }, dispatch] = useStateValue();
-	const [x, setX] = useState(1);
 	const history = useHistory("");
 
-	// useEffect(() => {
-	// 	auth.onAuthStateChanged(authUser => {
-	// 		console.log("THE USER IS >>>", authUser);
-	// 		if (authUser) {
-	// 			//the user just logged in / the user was logged in
-	// 			dispatch({
-	// 				type: "SET_USER",
-	// 				user: authUser
-	// 			});
-	// 		} else {
-	// 			// the user logged out of the account
-	// 			dispatch({
-	// 				type: "SET_USER",
-	// 				user: null
-	// 			});
-	// 		}
-	// 	});
-	// }, []);
+	//LOG OUT NOT WORKING
 
 	const logOut = () => {
-		sessionStorage.token = "";
-		sessionStorage.id = "";
+		sessionStorage.logueado = false;
 		sessionStorage.name = "";
-		sessionStorage.logOutConfirmation = false;
+		sessionStorage.token = "";
 		sessionStorage.picture = "";
-		store.user = {};
-		store.token = "";
-		store.logOutConfirmation = false;
-		setX(x + x);
+		history.push("/login");
+		// auth.signOut(provider)
+		// 	.then(user => {
+		// 		console.log("logged out", user);
+		// 	})
+		// 	.catch(error => {
+		// 		console.log(error.message);
+		// 	});
 	};
-
-	useEffect(() => {
-		console.log("useEffect");
-		if (sessionStorage.getItem("logOutConfirmation")) {
-			store.user = sessionStorage.getItem("user");
-			store.logOutConfirmation = true;
-			store.token = sessionStorage.token;
-		}
-	}, []);
 
 	return (
 		<div className="header_area">
@@ -91,13 +66,13 @@ export const Header = () => {
 												How it works
 											</Link>
 										</li>
-										{store.logOutConfirmation ? (
+										{sessionStorage.logueado ? (
 											<li className="nav-item page-scroll" onClick={logOut}>
 												<Link>Sign out</Link>
 											</li>
 										) : (
 											<li className="nav-item page-scroll">
-												<Link to="/login">Sign in</Link>
+												<Link to="/login">Login</Link>
 											</li>
 										)}
 										{/* <li className="nav-item" onClick={logOut}>
@@ -130,7 +105,7 @@ export const Header = () => {
 												{" "}
 												<span>Hello,</span>
 												<span>
-													{!store.logOutConfirmation
+													{!sessionStorage.logueado
 														? "Guest"
 														: sessionStorage.getItem("name")}
 												</span>

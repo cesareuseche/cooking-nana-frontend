@@ -2,13 +2,7 @@ const BASE_URL = "http://127.0.0.1:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {
-			match: {},
-			recipes: [],
-			user: {},
-			token: "",
-			logOutConfirmation: false
-		},
+		store: { match: [] },
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
 				let url = BASE_URL + "/register";
@@ -36,18 +30,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			check: async () => {
 				let url = BASE_URL + "/check";
-				let store = getStore();
 				let customHeader = new Headers({
-					Authorization: "Bearer " + store.user.jwt
+					Authorization: "Bearer " + sessionStorage.getItem("token")
 				});
 				let response = await fetch(url, {
 					method: "GET",
 					headers: customHeader
 				});
 				if (response.ok) {
+					console.log(sessionStorage.getItem("name") + " esta logueado");
 					return true;
 				} else {
-					setStore({ user: "" });
+					sessionStorage.token = "";
+					sessionStorage.name = "";
 					return false;
 				}
 			},
@@ -55,7 +50,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (user, password) => {
 				let url = BASE_URL + "/login";
 				let actions = getActions();
-				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
 
@@ -79,6 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: password
 					};
 				}
+				console.log("vamos a llamar a login");
 				let response = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -87,14 +82,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let information = await response.json();
 
 				if (response.ok) {
-					setStore({ user: information, token: information.jwt, logOutConfirmation: true });
-					sessionStorage.setItem("token", information.jwt);
-					sessionStorage.setItem("id", information.id);
-					sessionStorage.setItem("name", information.name);
-					sessionStorage.setItem("logOutConfirmation", true);
-					sessionStorage.setItem("user", information);
+					console.log("hice loguin, viene check");
 					let response2 = actions.check();
 					if (response2) {
+						sessionStorage.setItem("token", information.jwt);
+						sessionStorage.setItem("name", information.name);
+						sessionStorage.logueado = true;
 						return true;
 					} else {
 						return false;
@@ -104,60 +97,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			recipe: async e => {
-				let store = getStore();
-				for (let i = 0; i < store.match.length; i++) {
-					let url = BASE_URL + "/recipes/" + store.match[i];
-					let response = await fetch(url);
-					let recipe = await response.json();
-					if (recipe != "") {
-						store.recipes.push(recipe);
-					}
-				}
-				console.log(store.recipes);
-				return true;
-			},
-
-			// checking: async () => {
+			// recipes: async () => {
+			// 	let url = BASE_URL + "/recipes";
 			// 	let store = getStore();
-			// 	if (store.user == null && store.token == null) {
-			// 		if (sessionStorage.token != null) {
-			// 			let url = BASE_URL + "/user/" + sessionStorage.id;
-			// 			let response = await fetch(url);
-			// 			let information = await response.json();
-			// 			if (response.ok) {
-			// 				setStore({ user: information });
-			// 				setStore({ token: sessionStorage.getItem("token") });
-			// 				sessionStorage.token = sessionStorage.getItem("token");
-			// 			}
-			// 		}
+			// 	let response = await fetch(url, {
+			// 		method: "GET"
+			// 	});
+			// 	let information = await response.json();
+			// 	if (response.ok) {
+			// 		setStore({ recipes: information });
+			// 		console.log(store.recipes);
+			// 		return true;
+			// 	} else {
+			// 		return false;
 			// 	}
 			// },
 
+			logueando: () => {
+				sessionStorage.setItem("logueado", false);
+			},
+
 			match: async ingredients => {
+				console.log("Los ingredientes en el flux son: " + JSON.stringify(ingredients));
 				let url = BASE_URL + "/search";
-				let store = getStore();
 
 				let response = await fetch(url, {
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					// headers: [
+					// 	["Content-Type", "application/x-www-form-urlencoded"],
+					// 	["Content-Type", "multipart/form-data"],
+					// 	["Content-Type", "text/plain"],
+					// 	["Content-Type", "application/json"]
+					// ],
 					body: JSON.stringify(ingredients)
 				});
 
 				let information = await response.json();
+				console.log("El back me mando: " + information);
 				if (response.ok) {
-					console.log("toda la respuesta es: " + information);
-					console.log("los id son: " + information.no_dupe_id_list);
-					setStore({ match: information.no_dupe_id_list });
+					setStore({ match: information });
 					return true;
 				} else {
 					console.log(response.status);
 					return false;
 				}
-			},
-
-			init: () => {
-				sessionStorage.setItem("logOutConfirmation", false);
 			}
 		}
 	};

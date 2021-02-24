@@ -31,28 +31,27 @@ function Recipes() {
 	// 		}
 	// 	}
 	// });
-	const obtenerId = async () => {
-		let succes = await actions.recipe();
-	};
 
-	useEffect(() => {
-		obtenerId();
-	}, []);
+	// fetch = [1,2,3,4]
+	// for()
+	// fetch = receta[1]
+	// recetas[]
 
 	return (
 		<React.Fragment>
 			<div className="container-fluid presentation-width recipe-result">
 				<div className="row mobile-margin first-result-align" />
 				<div className="recipe-row col-md-12">
-					{store.recipes.map(recipe => (
+					{/* {recipes.map((recipe, i) => (
 						<RecipesResult
-							key={recipe.id}
+							key={i}
 							img={recipe.img_url}
 							description={recipe.description}
 							name={recipe.name}
 							id={recipe.id}
+							match={matchs[i]}
 						/>
-					))}
+					))} */}
 				</div>
 			</div>
 		</React.Fragment>
