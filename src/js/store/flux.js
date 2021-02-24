@@ -3,11 +3,12 @@ const BASE_URL = "http://127.0.0.1:8080";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			match: {},
-			recipes: [],
 			user: {},
 			token: "",
-			logOutConfirmation: false
+			logOutConfirmation: false,
+			match: {},
+			recipes: [],
+			recipeToShow: {}
 		},
 		actions: {
 			registerContact: async (email, name, last_name, username, password) => {
@@ -29,7 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					actions.login(new_user.username, new_user.password);
 					return true;
 				} else {
-					console.log(response.statusText);
 					return false;
 				}
 			},
@@ -104,10 +104,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			init: () => {
-				sessionStorage.setItem("logOutConfirmation", false);
-			},
-
 			logOut: () => {
 				sessionStorage.setItem("token", "");
 				sessionStorage.setItem("id", "");
@@ -127,7 +123,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			recipe: async e => {
+			searchRecipes: async ingredients => {
+				let url = BASE_URL + "/search";
+				let store = getStore();
+
+				let response = await fetch(url, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(ingredients)
+				});
+
+				let information = await response.json();
+				if (response.ok) {
+					setStore({ match: information.no_dupe_id_list });
+					return true;
+				} else {
+					return false;
+				}
+			},
+
+			saveRecipes: async e => {
 				let store = getStore();
 				let recetas = [];
 				for (let i = 0; i < store.match.length; i++) {
@@ -142,26 +157,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return true;
 			},
 
-			match: async ingredients => {
-				let url = BASE_URL + "/search";
+			setRecipeToStore: recipe => {
 				let store = getStore();
+				setStore({ recipeToShow: recipe });
+			},
 
-				let response = await fetch(url, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(ingredients)
-				});
-
-				let information = await response.json();
-				if (response.ok) {
-					console.log("toda la respuesta es: " + information);
-					console.log("los id son: " + information.no_dupe_id_list);
-					setStore({ match: information.no_dupe_id_list });
-					return true;
-				} else {
-					console.log(response.status);
-					return false;
-				}
+			searchRecipe: () => {
+				let store = getStore();
+				return store.recipes[store.recipeID];
 			}
 		}
 	};
