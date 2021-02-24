@@ -32,18 +32,21 @@ function Market() {
 					</div>
 					<div className="product-row">
 						<MarketProducts
+							id={12364789}
 							title={`Handcrafted Japanese Chef's knife`}
 							price={"114.99"}
 							rating={5}
 							image={chefKnife}
 						/>
 						<MarketProducts
+							id={189374980}
 							title={'11" Nonstick Fry Pan'}
 							price={"102.99"}
 							rating={5}
 							image={sartenSalmon}
 						/>
 						<MarketProducts
+							id={1893378920}
 							title={"Pan Stainless Steel Small Saucepan"}
 							price={"94.99"}
 							rating={4}
@@ -58,9 +61,27 @@ function Market() {
 						</div>
 					</div>
 					<div className="product-row product-row-margin">
-						<MarketProducts title={"Spice Blend Bundle"} price={"79.99"} rating={4} image={spiceBundle} />
-						<MarketProducts title={"Italian Tuscan Blend"} price={"9.99"} rating={5} image={tuscanBlend} />
-						<MarketProducts title={"Kosher Sea Salt"} price={"8.99"} rating={3} image={kosherSalt} />
+						<MarketProducts
+							id={1893047630}
+							title={"Spice Blend Bundle"}
+							price={"79.99"}
+							rating={4}
+							image={spiceBundle}
+						/>
+						<MarketProducts
+							id={189374980}
+							title={"Italian Tuscan Blend"}
+							price={"9.99"}
+							rating={5}
+							image={tuscanBlend}
+						/>
+						<MarketProducts
+							id={1893768920}
+							title={"Kosher Sea Salt"}
+							price={"8.99"}
+							rating={3}
+							image={kosherSalt}
+						/>
 					</div>
 					<div className="container-fluid presentation-width">
 						<div className="row">
@@ -72,18 +93,26 @@ function Market() {
 					</div>
 					<div className="product-row product-row-margin product-row-margin-bottom">
 						<MarketProducts
+							id={18973634374}
 							title={"Essential Dinner Pairings - Multipack"}
 							price={"59.99"}
 							rating={4}
 							image={wine1}
 						/>
 						<MarketProducts
+							id={18937894853}
 							title={"Italian Favorites - Perfect with red sauce"}
 							price={"70.99"}
 							rating={5}
 							image={italianWine}
 						/>
-						<MarketProducts title={"French Wines Bundle"} price={"59.99"} rating={5} image={frenchWine} />
+						<MarketProducts
+							id={18937434586}
+							title={"French Wines Bundle"}
+							price={"59.99"}
+							rating={5}
+							image={frenchWine}
+						/>
 					</div>
 					<Footer />
 				</div>
