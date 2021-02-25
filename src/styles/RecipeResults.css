@@ -2,6 +2,16 @@
     width: 48%;
 }
 
+.card-img-top{
+   max-width: 100%;
+    height: 400px;
+}
+
+.recipe-description-align{
+    display: flex;
+    flex-direction: row;
+}
+
 .description-alignment p{
     display: flex;
     justify-content: center;
@@ -21,4 +31,8 @@
       flex-direction: column;
        justify-content: center;
    }
+}
+
+.card-title{
+    text-transform: uppercase;
 }

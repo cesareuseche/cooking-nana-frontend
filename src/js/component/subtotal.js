@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../store/stateProvider";
@@ -7,6 +7,12 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function Subtotal() {
 	const [{ cart }, dispatch] = useStateValue();
+	useEffect(() => {
+		// console.log("en el carrito hay: " + cart);
+		console.log("getCartTotal(cart): " + getCartTotal(cart));
+		// console.log("cart.reduce(getCartTotal())" + cart.reduce(getCartTotal()));
+	});
+
 	return (
 		<div className="subtotal">
 			<CurrencyFormat

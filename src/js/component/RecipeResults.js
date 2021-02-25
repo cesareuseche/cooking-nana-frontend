@@ -13,7 +13,7 @@ function RecipesResult({ recipe }) {
 
 	return (
 		<React.Fragment>
-			<div className="card-group card-size">
+			<div className="card-group card-size recipe-description-align">
 				<div className="card shadow mb-5">
 					<img src={recipe.img_url} className="card-img-top" alt="" />
 					<div className="card-body recipe-button">
@@ -23,9 +23,9 @@ function RecipesResult({ recipe }) {
 						</Link>
 					</div>
 				</div>
-			</div>
-			<div className="description-alignment">
-				<p>{recipe.description}</p>
+				<div className="description-alignment">
+					<p>{recipe.description}</p>
+				</div>
 			</div>
 		</React.Fragment>
 	);
