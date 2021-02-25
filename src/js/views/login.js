@@ -13,11 +13,11 @@ function Login() {
 	const [state, dispatch] = useStateValue();
 	const { store, actions } = useContext(Context);
 	const history = useHistory("");
-	const [user, setUser] = useState("");
+	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const login = async e => {
 		e.preventDefault();
-		const succes = await actions.login(user, password);
+		const succes = await actions.login(userName, password);
 		if (succes) {
 			history.push("/");
 		}
@@ -53,9 +53,11 @@ function Login() {
 				<h1>Sign in to Cooking Nana</h1>
 				<input
 					className="sign-input"
-					type="text"
+					type="email"
 					placeholder="Email/Username"
-					onChange={e => setUser(e.target.value)}
+					id="email"
+					name="email"
+					onChange={e => setUserName(e.target.value)}
 				/>
 				<input
 					className="sign-input"

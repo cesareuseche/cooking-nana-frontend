@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {},
-			token: "",
 			logOutConfirmation: false,
 			match: {},
 			recipes: [],
@@ -34,30 +33,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			login: async (user, password) => {
+			login: async (user_name, password) => {
 				let url = BASE_URL + "/login";
 				let actions = getActions();
 				let store = getStore();
 				let login_data = {};
 				let atCounter = false;
 
-				for (var i = 0; i < user.length; i++) {
+				for (var i = 0; i < user_name.length; i++) {
 					if (atCounter) {
 						break;
 					}
-					if (user.charAt(i) == "@") {
+					if (user_name.charAt(i) == "@") {
 						atCounter = true;
 					}
 				}
 
 				if (!atCounter) {
 					login_data = {
-						username: user,
+						username: user_name,
 						password: password
 					};
 				} else if (atCounter) {
 					login_data = {
-						email: user,
+						email: user_name,
 						password: password
 					};
 				}
@@ -66,18 +65,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(login_data)
 				});
-				let information = await response.json();
-
+				let user = await response.json();
+				actions.saveUserData(user);
 				if (response.ok) {
 					let response2 = actions.checkUser();
 					if (response2) {
-						setStore({logOutConfirmation: true});
-						actions.saveUserData(information);
+						setStore({ logOutConfirmation: true });
 						return true;
 					} else {
+						actions.logOut();
 						return false;
 					}
 				} else {
+					actions.logOut();
 					return false;
 				}
 			},
@@ -96,37 +96,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) {
 					return true;
 				} else {
-					actions.logOut();
 					return false;
 				}
 			},
 
 			saveUserData: user => {
-				setStore({ user: user, token: user.jwt, logOutConfirmation: true });
+				setStore({ user: user, logOutConfirmation: true });
 				sessionStorage.setItem("token", user.jwt);
 				sessionStorage.setItem("id", user.id);
-				sessionStorage.setItem("name", user.name);
+				sessionStorage.setItem(
+					"name",
+					user.name.charAt(0).toUpperCase() +
+						user.name.slice(1) +
+						" " +
+						user.last_name.charAt(0).toUpperCase() +
+						user.last_name.slice(1)
+				);
 				sessionStorage.setItem("logOutConfirmation", true);
-				sessionStorage.setItem("user", user);
 				sessionStorage.setItem("picture", user.picture);
 			},
 
 			logOut: () => {
-				setStore({ logOutConfirmation: false, user: {}, token: "" });
+				setStore({ logOutConfirmation: false, user: {} });
 				sessionStorage.setItem("token", "");
 				sessionStorage.setItem("id", "");
 				sessionStorage.setItem("name", "");
 				sessionStorage.setItem("logOutConfirmation", "");
-				sessionStorage.setItem("user", {});
 				sessionStorage.setItem("picture", "");
 			},
 
 			checkingUser: async () => {
 				if (sessionStorage.getItem("logOutConfirmation")) {
+					let user = {
+						name: sessionStorage.getItem("name"),
+						jwt: sessionStorage.getItem("token"),
+						id: sessionStorage.getItem("id")
+					};
 					setStore({
-						user: sessionStorage.getItem("user"),
-						logOutConfirmation: true,
-						token: sessionStorage.token
+						user: user,
+						logOutConfirmation: true
 					});
 				}
 			},
