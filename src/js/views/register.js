@@ -17,7 +17,6 @@ function Register() {
 		e.preventDefault();
 		const succes = await actions.registerContact(email, name, last_name, username, password);
 		if (succes) {
-			console.log("usuario creado register.js");
 			history.push("/");
 		} else {
 			console.log("usuario no creado register.js");

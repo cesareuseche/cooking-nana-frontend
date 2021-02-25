@@ -52,18 +52,22 @@ export const Header = () => {
 										</li>
 										{store.logOutConfirmation ? (
 											<li className="nav-item page-scroll" onClick={actions.logOut}>
-												<Link>Sign out</Link>
+												<Link to="/">Sign out</Link>
 											</li>
 										) : (
 											<li className="nav-item page-scroll">
 												<Link to="/login">Sign in</Link>
 											</li>
 										)}
-										<li className="nav-item">
-											<Link className="page-scroll" to="/register">
-												Create Account
-											</Link>
-										</li>
+										{store.logOutConfirmation ? (
+											<></>
+										) : (
+											<li className="nav-item">
+												<Link className="page-scroll" to="/register">
+													Create Account
+												</Link>
+											</li>
+										)}
 										<li className="nav-item">
 											<Link className="page-scroll" to="/market">
 												Market

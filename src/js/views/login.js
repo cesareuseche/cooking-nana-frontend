@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import "../../styles/Login.css";
 import logo from "../../img/logo.png";
 import googleIcon from "../../img/googleIcon.svg";
@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
 import { actionTypes } from "../store/reducer";
-import { setLogOutConfirmation } from "../component/header";
 
 function Login() {
 	const [state, dispatch] = useStateValue();
@@ -20,7 +19,6 @@ function Login() {
 		e.preventDefault();
 		const succes = await actions.login(user, password);
 		if (succes) {
-			store.logOutConfirmation = true;
 			history.push("/");
 		}
 	};
@@ -29,17 +27,13 @@ function Login() {
 		auth.signInWithPopup(provider)
 			.then(result => {
 				if (result) {
-					store.logOutConfirmation = true;
-					store.token = result.credential.accessToken;
 					let user = {
 						name: result.additionalUserInfo.profile.name,
 						emai: result.additionalUserInfo.profile.email,
-						jwt: result.credential.accessToken
+						jwt: result.credential.accessToken,
+						picture: result.additionalUserInfo.profile.picture
 					};
-					store.user = user;
-					sessionStorage.setItem("picture", result.additionalUserInfo.profile.picture);
-					sessionStorage.setItem("token", result.credential.accessToken);
-					sessionStorage.setItem("name", result.additionalUserInfo.profile.name);
+					actions.saveUserData(user);
 					dispatch({
 						type: actionTypes.SET_USER,
 						user: result.user

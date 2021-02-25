@@ -15,8 +15,8 @@ function IngredientSelection() {
 	const [carbs, setCarbs] = useState([]);
 	const [veggies, setVeggies] = useState([]);
 
-	let x = [];
-	let y = {};
+	let list = [];
+	let dictionary = {};
 	let handleChangeP = e => {
 		setProteins(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
@@ -28,10 +28,10 @@ function IngredientSelection() {
 		setVeggies(Array.isArray(e) ? e.map(x => x.value) : []);
 	};
 
-	const send = async e => {
-		x = x.concat(proteins, carbs, veggies);
-		y = { search: x };
-		const succes = await actions.searchRecipes(y);
+	const sendIngredients = async e => {
+		list = list.concat(proteins, carbs, veggies);
+		dictionary = { search: list };
+		const succes = await actions.searchRecipes(dictionary);
 		if (succes) {
 			history.push("/recipes");
 		}
@@ -105,7 +105,7 @@ function IngredientSelection() {
 					</div>
 					<div className="row">
 						<div className="col-md-12 button-alignment button-style">
-							<button onClick={send}>Search your Recipe</button>
+							<button onClick={sendIngredients}>Search your Recipe</button>
 						</div>
 					</div>
 				</div>

@@ -34,24 +34,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			check: async () => {
-				let url = BASE_URL + "/check";
-				let store = getStore();
-				let customHeader = new Headers({
-					Authorization: "Bearer " + store.user.jwt
-				});
-				let response = await fetch(url, {
-					method: "GET",
-					headers: customHeader
-				});
-				if (response.ok) {
-					return true;
-				} else {
-					setStore({ user: "" });
-					return false;
-				}
-			},
-
 			login: async (user, password) => {
 				let url = BASE_URL + "/login";
 				let actions = getActions();
@@ -87,14 +69,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let information = await response.json();
 
 				if (response.ok) {
-					setStore({ user: information, token: information.jwt, logOutConfirmation: true });
-					sessionStorage.setItem("token", information.jwt);
-					sessionStorage.setItem("id", information.id);
-					sessionStorage.setItem("name", information.name);
-					sessionStorage.setItem("logOutConfirmation", true);
-					sessionStorage.setItem("user", information);
-					let response2 = actions.check();
+					let response2 = actions.checkUser();
 					if (response2) {
+						setStore({logOutConfirmation: true});
+						actions.saveUserData(information);
 						return true;
 					} else {
 						return false;
@@ -104,21 +82,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			checkUser: async () => {
+				let url = BASE_URL + "/check";
+				let actions = getActions();
+				let store = getStore();
+				let customHeader = new Headers({
+					Authorization: "Bearer " + store.user.jwt
+				});
+				let response = await fetch(url, {
+					method: "GET",
+					headers: customHeader
+				});
+				if (response.ok) {
+					return true;
+				} else {
+					actions.logOut();
+					return false;
+				}
+			},
+
+			saveUserData: user => {
+				setStore({ user: user, token: user.jwt, logOutConfirmation: true });
+				sessionStorage.setItem("token", user.jwt);
+				sessionStorage.setItem("id", user.id);
+				sessionStorage.setItem("name", user.name);
+				sessionStorage.setItem("logOutConfirmation", true);
+				sessionStorage.setItem("user", user);
+				sessionStorage.setItem("picture", user.picture);
+			},
+
 			logOut: () => {
+				setStore({ logOutConfirmation: false, user: {}, token: "" });
 				sessionStorage.setItem("token", "");
 				sessionStorage.setItem("id", "");
 				sessionStorage.setItem("name", "");
 				sessionStorage.setItem("logOutConfirmation", "");
 				sessionStorage.setItem("user", {});
-				setStore({ logOutConfirmation: false, user: {}, token: "" });
+				sessionStorage.setItem("picture", "");
 			},
 
-			checking: () => {
+			checkingUser: async () => {
 				if (sessionStorage.getItem("logOutConfirmation")) {
 					setStore({
 						user: sessionStorage.getItem("user"),
 						logOutConfirmation: true,
-						toke: sessionStorage.token
+						token: sessionStorage.token
 					});
 				}
 			},
@@ -144,13 +152,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			saveRecipes: async e => {
 				let store = getStore();
-				let recetas = [];
+				let recipes = [];
 				for (let i = 0; i < store.match.length; i++) {
 					let url = BASE_URL + "/recipes/" + store.match[i];
 					let response = await fetch(url);
 					let recipe = await response.json();
 					if (recipe != "") {
-						recetas.push(recipe);
+						recipes.push(recipe);
 					}
 				}
 				setStore({ recipes: recetas });
