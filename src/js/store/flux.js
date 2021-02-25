@@ -100,20 +100,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			saveUserData: user => {
+			saveUserData: (user, google = null) => {
 				setStore({ user: user, logOutConfirmation: true });
 				sessionStorage.setItem("token", user.jwt);
 				sessionStorage.setItem("id", user.id);
-				sessionStorage.setItem(
-					"name",
-					user.name.charAt(0).toUpperCase() +
-						user.name.slice(1) +
-						" " +
-						user.last_name.charAt(0).toUpperCase() +
-						user.last_name.slice(1)
-				);
 				sessionStorage.setItem("logOutConfirmation", true);
 				sessionStorage.setItem("picture", user.picture);
+				if (google) {
+					sessionStorage.setItem("name", user.name);
+				} else {
+					sessionStorage.setItem(
+						"name",
+						user.name.charAt(0).toUpperCase() +
+							user.name.slice(1) +
+							" " +
+							user.last_name.charAt(0).toUpperCase() +
+							user.last_name.slice(1)
+					);
+				}
 			},
 
 			logOut: () => {
@@ -169,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						recipes.push(recipe);
 					}
 				}
-				setStore({ recipes: recetas });
+				setStore({ recipes: recipes });
 				return true;
 			},
 

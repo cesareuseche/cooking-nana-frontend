@@ -33,7 +33,7 @@ function Login() {
 						jwt: result.credential.accessToken,
 						picture: result.additionalUserInfo.profile.picture
 					};
-					actions.saveUserData(user);
+					actions.saveUserData(user, true);
 					dispatch({
 						type: actionTypes.SET_USER,
 						user: result.user
