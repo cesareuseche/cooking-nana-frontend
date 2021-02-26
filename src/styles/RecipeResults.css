@@ -7,11 +7,6 @@
     height: 400px;
 }
 
-.recipe-description-align{
-    display: flex;
-    flex-direction: row;
-}
-
 .description-alignment p{
     display: flex;
     justify-content: center;

@@ -23,7 +23,7 @@ const RecipesCards = () => {
 							<div className="card shadow">
 								<img src={pasta} className="card-img-top" alt="" />
 								<div className="card-body">
-									<h5 className="card-title">Spaghetti Alla Carrettiera</h5>
+									<h5 className="card-title">Spaghetti Carrettiera</h5>
 									<p className="card-text" />
 								</div>
 							</div>
@@ -34,7 +34,7 @@ const RecipesCards = () => {
 							<div className="card shadow">
 								<img src={pasta} className="card-img-top" alt="" />
 								<div className="card-body">
-									<h5 className="card-title">Spaghetti Alla Carrettiera</h5>
+									<h5 className="card-title">Spaghetti Carrettiera</h5>
 									<p className="card-text" />
 								</div>
 							</div>
