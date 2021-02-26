@@ -13,18 +13,22 @@ function RecipesResult({ recipe }) {
 
 	return (
 		<React.Fragment>
-			<div className="card-group card-size recipe-description-align">
-				<div className="card shadow mb-5">
-					<img src={recipe.img_url} className="card-img-top card-img-top-recipe-results" alt="" />
-					<div className="card-body recipe-button">
-						<h5 className="card-title-recipe-results">{recipe.name}</h5>
-						<Link to={"/recipe"}>
-							<button onClick={setRecipe}>Full Recipe</button>
-						</Link>
+			<div className="container">
+				<div className="row">
+					<div className="card-group card-size recipe-description-align">
+						<div className="card shadow mb-5">
+							<img src={recipe.img_url} className="card-img-top card-img-top-recipe-results" alt="" />
+							<div className="card-body recipe-button">
+								<h5 className="card-title-recipe-results">{recipe.name}</h5>
+								<Link to={"/recipe"}>
+									<button onClick={setRecipe}>Full Recipe</button>
+								</Link>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div className="description-alignment">
-					<p>{recipe.description}</p>
+					<div className="col-md-6 description-alignment">
+						<p>{recipe.description}</p>
+					</div>
 				</div>
 			</div>
 		</React.Fragment>

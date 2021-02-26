@@ -17,7 +17,11 @@
 }
 
 .recipe-title h1{
-    margin: 10px 0px;
+    margin: 0px 30px;
+}
+
+.recipe-title h3{
+    margin: 10px 30px;
 }
 
 @media screen and (max-width:991px){
@@ -30,6 +34,7 @@
     max-width: 504px;
     max-height: 405px !important;
     margin-bottom: 10%;
+    margin-left: 30px;
 }
 
 @media screen and (max-width: 1024px){
@@ -44,6 +49,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 17%;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    background: white;
 }
 
 @media screen and (max-width: 1024px){
@@ -60,4 +68,10 @@
         margin-left: 2rem;
         text-align: center;
     }
+}
+
+.background-recipe{
+    background: url("../img/backgroundyellow.jpg");
+    background-size: cover ;
+    background-position: 100%;
 }

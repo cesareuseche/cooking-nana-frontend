@@ -7,7 +7,7 @@ function Recipe() {
 
 	return (
 		<React.Fragment>
-			<div className="container-fluid">
+			<div className="container-fluid background-recipe">
 				<div className="row row-recipe-responsive">
 					<div className="col-md-6 recipe-title recipe-image">
 						<h1>This is your Recipe</h1>
