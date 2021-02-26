@@ -26,14 +26,14 @@
     }
 }
 
-.recipe-image{
+.recipe-image img{
     max-width: 504px;
-    max-height: 405px;
+    max-height: 405px !important;
     margin-bottom: 10%;
 }
 
 @media screen and (max-width: 1024px){
-    .recipe-image{
+    .recipe-image img{
         display: flex;
         justify-content: center;
         margin-left: 2rem;
