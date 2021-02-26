@@ -154,8 +154,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				let information = await response.json();
+				console.log("information: " + information.no_dupe_id_list);
+				let x = [];
+				const numeros = [1, 2, 2, 3, 4, 4, 5];
+				const unicos = [];
+
+				for (var i = 0; i < information.no_dupe_id_list.length; i++) {
+					const elemento = information.no_dupe_id_list[i];
+
+					if (!unicos.includes(information.no_dupe_id_list[i])) {
+						unicos.push(elemento);
+					}
+				}
 				if (response.ok) {
-					setStore({ match: information.no_dupe_id_list });
+					setStore({ match: unicos });
 					return true;
 				} else {
 					return false;
