@@ -2,7 +2,7 @@
     width: 48%;
 }
 
-.card-img-top{
+.card-img-top-recipe-results{
    max-width: 100%;
     height: 400px;
 }
@@ -33,6 +33,6 @@
    }
 }
 
-.card-title{
+.card-title-recipe-results{
     text-transform: uppercase;
 }
