@@ -6,7 +6,7 @@ const RecipesCards = () => {
 	return (
 		<React.Fragment>
 			<div className="container-fluid presentation-width">
-				<div className="row">
+				<div className="row mt-4">
 					<div className="col-md-3">
 						<div className="card-group">
 							<div className="card shadow mb-5">
