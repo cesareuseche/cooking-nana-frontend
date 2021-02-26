@@ -49,7 +49,9 @@ function Login() {
 	return (
 		<div className="login background-login">
 			<div className="login__container">
-				<img src={logo} alt="" />
+				<Link to="/">
+					<img src={logo} alt="" />
+				</Link>
 				<h1>Sign in to Cooking Nana</h1>
 				<input
 					className="sign-input"

@@ -5,10 +5,15 @@
     font-family: 'Hammersmith One', sans-serif;
 }
 
+.login__container img {
+    width: 15%;
+}
+
 .background-login{
     background: url("../img/backgroundyellow.jpg");
     background-size: cover ;
     background-position: 100%;
+    height: 100%;
 }
 
 .login__container > img {
