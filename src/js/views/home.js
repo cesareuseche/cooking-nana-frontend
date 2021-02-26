@@ -50,7 +50,7 @@ function Home() {
 			<div className="container-fluid presentation-width">
 				<div className="row">
 					<div className="col-md-12">
-						<h2>Recepes</h2>
+						<h2>Recipes</h2>
 					</div>
 				</div>
 			</div>
