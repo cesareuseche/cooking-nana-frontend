@@ -95,21 +95,21 @@ function Market() {
 						<MarketProducts
 							id={18973634374}
 							title={"Essential Dinner Pairings - Multipack"}
-							price={"59.99"}
+							price={59.99}
 							rating={4}
 							image={wine1}
 						/>
 						<MarketProducts
 							id={18937894853}
 							title={"Italian Favorites - Perfect with red sauce"}
-							price={"70.99"}
+							price={70.99}
 							rating={5}
 							image={italianWine}
 						/>
 						<MarketProducts
 							id={18937434586}
 							title={"French Wines Bundle"}
-							price={"59.99"}
+							price={59.99}
 							rating={5}
 							image={frenchWine}
 						/>
