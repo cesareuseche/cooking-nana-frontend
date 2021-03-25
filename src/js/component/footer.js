@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import cookingNanaLogo from "../../img/Cooking-nana.png";
 import "../../styles/footer.css";
 
@@ -68,24 +69,24 @@ export const Footer = () => (
 					<h6 className="text-uppercase font-weight-bold mb-4">Company</h6>
 					<ul className="list-unstyled mb-0">
 						<li className="mb-2">
-							<a href="/login" className="text-muted">
-								Login
-							</a>
+							<Link to="/login" className="text-muted">
+								Sign-In
+							</Link>
 						</li>
 						<li className="mb-2">
-							<a href="/register" className="text-muted">
+							<Link to="/register" className="text-muted">
 								Create Account
-							</a>
+							</Link>
 						</li>
 						<li className="mb-2">
-							<a href="#" className="text-muted">
+							<Link to="/market" className="text-muted">
 								Market
-							</a>
+							</Link>
 						</li>
 						<li className="mb-2">
-							<a href="#" className="text-muted">
-								Wishlist
-							</a>
+							<Link to="/cart" className="text-muted">
+								Cart
+							</Link>
 						</li>
 					</ul>
 				</div>
