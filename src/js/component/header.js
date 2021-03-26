@@ -7,6 +7,7 @@ import CookingNana from "../../img/Cooking-nana.png";
 import cartIcon from "../../img/newcart.png";
 import { useStateValue } from "../store/stateProvider";
 import { auth, provider } from "../store/firebase";
+import { Navbar, Nav } from "react-bootstrap";
 
 export const Header = () => {
 	const { store, actions } = useContext(Context);
@@ -14,91 +15,42 @@ export const Header = () => {
 	const history = useHistory("");
 
 	return (
-		<div className="header_area">
-			<div className="header_navbar">
-				<div className="container-fluid">
-					<div className="row">
-						<div className="col-lg-12">
-							<nav className="navbar navbar-expand-lg">
-								<Link className="header__brand" to="/">
-									<img src={CookingNana} alt="Logo" />
-								</Link>
-								<button
-									className="navbar-toggler"
-									type="button"
-									data-toggle="collapse"
-									data-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent"
-									aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span className="toggler-icon" />
-									<span className="toggler-icon" />
-									<span className="toggler-icon" />
-								</button>
+		<Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top">
+			<Navbar.Brand className="header__brand">
+				<img href="/" src={CookingNana} alt="Logo" />
+			</Navbar.Brand>
+			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+			<Navbar.Collapse id="responsive-navbar-nav" className="menu-alignment">
+				<Nav className="mr-auto menu-center">
+					<Nav.Link href="/">Home</Nav.Link>
+					<Nav.Link href="/">How it works</Nav.Link>
 
-								<div
-									className="collapse navbar-collapse sub-menu-bar navbar-alignment-new"
-									id="navbarSupportedContent">
-									<ul id="nav" className="navbar-nav navbar-aligment-new">
-										<li className="nav-item active">
-											<Link className="page-scroll" to="/">
-												Home
-											</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="page-scroll" to="/">
-												How it works
-											</Link>
-										</li>
-										{store.logOutConfirmation ? (
-											<li className="nav-item page-scroll" onClick={actions.logOut}>
-												<Link to="/">Sign out</Link>
-											</li>
-										) : (
-											<li className="nav-item page-scroll">
-												<Link to="/login">Sign in</Link>
-											</li>
-										)}
-										{store.logOutConfirmation ? (
-											<></>
-										) : (
-											<li className="nav-item">
-												<Link className="page-scroll" to="/register">
-													Create Account
-												</Link>
-											</li>
-										)}
-										<li className="nav-item">
-											<Link className="page-scroll" to="/market">
-												Market
-											</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="page-scroll icon-cart" to="/cart">
-												<img src={cartIcon} alt="cart-icon" />
-												<span>{cart.length}</span>
-											</Link>
-										</li>
-										<li className="signIn-color">
-											<Link className="username-header">
-												{" "}
-												<span>Hello,</span>
-												<span>
-													{!store.logOutConfirmation
-														? "Guest"
-														: sessionStorage.getItem("name")}
-												</span>
-												<Avatar src={sessionStorage.getItem("picture")} />
-											</Link>
-										</li>
-									</ul>
-								</div>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+					{store.logOutConfirmation ? (
+						<Nav.Link onClick={actions.logOut} href="/">
+							Sign out
+						</Nav.Link>
+					) : (
+						<Nav.Link onClick={actions.logOut} href="/login">
+							Sign in
+						</Nav.Link>
+					)}
+					{store.logOutConfirmation ? <></> : <Nav.Link href="/register">Create Account</Nav.Link>}
+					<Nav.Link href="/market">Market</Nav.Link>
+				</Nav>
+				<Nav className="cart-avatar-alignment">
+					<Nav.Link href="/cart" className="icon-cart">
+						<img src={cartIcon} alt="cart-icon" />
+						<span>{cart.length}</span>
+					</Nav.Link>
+					<Nav.Link className="username-header">
+						<span>Hello,</span>
+						<span>{!store.logOutConfirmation ? "Guest" : sessionStorage.getItem("name")}</span>
+						<Avatar src={sessionStorage.getItem("picture")} />
+					</Nav.Link>
+				</Nav>
+				<Nav />
+			</Navbar.Collapse>
+		</Navbar>
 	);
 };
 
