@@ -75,7 +75,7 @@ export const Header = () => {
 										</li>
 										<li className="nav-item">
 											<Link className="page-scroll icon-cart" to="/cart">
-												<img src={cartIcon} />
+												<img src={cartIcon} alt="cart-icon" />
 												<span>{cart.length}</span>
 											</Link>
 										</li>
