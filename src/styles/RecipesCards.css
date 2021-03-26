@@ -1,5 +1,13 @@
-.card-img-top {
+.recipe-cards {
     width: 100%;
     height: 15vw;
     object-fit: cover;
 }
+
+@media screen and (max-width: 550px) {
+      .recipe-cards{
+        height: 65vw;
+        object-fit: cover;
+      }
+}
+
