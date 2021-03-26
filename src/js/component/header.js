@@ -34,8 +34,7 @@ export const Header = () => {
 							Sign in
 						</Nav.Link>
 					)}
-
-					<Nav.Link href="/register">Create Account</Nav.Link>
+					{store.logOutConfirmation ? <></> : <Nav.Link href="/register">Create Account</Nav.Link>}
 					<Nav.Link href="/market">Market</Nav.Link>
 				</Nav>
 				<Nav className="cart-avatar-alignment">
