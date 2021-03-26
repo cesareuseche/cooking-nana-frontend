@@ -4,7 +4,7 @@
     object-fit: cover;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 765px) {
       .recipe-cards{
         height: 65vw;
         object-fit: cover;
