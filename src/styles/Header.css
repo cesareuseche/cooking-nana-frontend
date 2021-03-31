@@ -221,11 +221,25 @@
         display: block;
         padding: 4px 0;
         color: #222; } }
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       .navbar-nav .nav-item a {
         display: block;
         padding: 4px 0;
-        color: #222; } }
+        color: #222; 
+      } 
+      .icon-cart{
+        margin-left: 39px;
+      }
+
+      .icon-cart img{
+        width: 50% !important;
+      }
+    
+      .username-header{
+        margin-left: 50px;
+      }
+    
+    }
   .navbar-nav .nav-item.active > a::before, .navbar-nav .nav-item:hover > a::before {
     width: 100%; }
   .navbar-nav .nav-item:hover .sub-menu {
